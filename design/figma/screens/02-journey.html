@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Figma Export — License Journey</title>
+  <link rel="stylesheet" href="../shared.css" />
+  <style>
+    .desc { color: #64748b; font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
+    .hub-title { font-size: 24px; margin: 12px 0 0; }
+    .step { display: flex; gap: 20px; margin-bottom: 8px; }
+    .indicator { display: flex; flex-direction: column; align-items: center; }
+    .num {
+      width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; font-weight: 700; font-size: 16px;
+    }
+    .num--complete { background: #dcfce7; color: #15803d; }
+    .num--active { background: #2563eb; color: #fff; }
+    .num--locked { background: #f1f5f9; color: #94a3b8; }
+    .line { width: 2px; flex: 1; min-height: 24px; background: #e2e8f0; margin: 6px 0; }
+    .line--done { background: #86efac; }
+    .content {
+      flex: 1; background: #fff; border: 1px solid #dbe3ef; border-radius: 14px;
+      padding: 20px; margin-bottom: 16px;
+    }
+    .content--active { border-color: #93c5fd; box-shadow: 0 0 0 3px #eff6ff; }
+    .content--locked { opacity: 0.7; }
+    .content h3 { margin-bottom: 8px; font-size: 16px; }
+    .content p { color: #475569; font-size: 14px; line-height: 1.5; margin-bottom: 8px; }
+    .detail { font-weight: 600; color: #2563eb !important; }
+    .cert-banner {
+      background: #f0fdf4; border: 1px solid #86efac; border-radius: 14px;
+      padding: 24px; text-align: center; margin-top: 8px;
+    }
+    .cert-banner p { color: #15803d; font-weight: 600; font-size: 18px; margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+  <div class="frame" data-screen="License Journey">
+    <header class="hub-header">
+      <div class="hub-header-top"><span class="hub-back">← Back</span><span class="hub-logo">DMV Study</span></div>
+      <div class="hours-label"><span>Study Hours</span><strong>12 / 30 hrs</strong></div>
+      <div class="progress-track"><div class="progress-fill" style="width:40%"></div></div>
+      <h1 class="hub-title">Driver License Journey</h1>
+    </header>
+    <main class="hub-main">
+      <p class="desc">Your step-by-step roadmap to getting a California driver's license.</p>
+
+      <div class="step">
+        <div class="indicator"><div class="num num--complete">✓</div><div class="line line--done"></div></div>
+        <div class="content">
+          <h3>Study 30 Hours</h3>
+          <p>Complete lessons and quizzes. Active study time is tracked automatically.</p>
+          <p class="detail">12 / 30 hours</p>
+          <div class="progress-track" style="margin:12px 0"><div class="progress-fill" style="width:40%"></div></div>
+          <a class="btn btn-secondary btn-sm" href="#">Continue Studying</a>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="indicator"><div class="num num--locked">2</div><div class="line"></div></div>
+        <div class="content content--locked">
+          <h3>Get Completion Certificate</h3>
+          <p>Automatically unlocked after completing 30 hours of study. Free certificate from our platform.</p>
+          <p class="detail">18 hours remaining</p>
+          <a class="btn btn-secondary btn-sm" href="#">Track Progress</a>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="indicator"><div class="num num--locked">3</div><div class="line"></div></div>
+        <div class="content content--locked">
+          <h3>Visit DMV</h3>
+          <p>Find your nearest DMV office, book an appointment, and prepare for the written permit test.</p>
+          <p class="detail">Bring your certificate and required documents.</p>
+          <a class="btn btn-secondary btn-sm" href="#">Find DMV Locations ↗</a>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="indicator"><div class="num num--locked">4</div><div class="line"></div></div>
+        <div class="content content--locked">
+          <h3>Get Learner's Permit</h3>
+          <p>Pass the DMV written test and receive your learner's permit.</p>
+          <p class="detail">Requires passing the written permit exam at the DMV.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="indicator"><div class="num num--locked">5</div><div class="line"></div></div>
+        <div class="content content--locked">
+          <h3>Driving Practice (6 Hours)</h3>
+          <p>Complete 6 hours of behind-the-wheel training with a certified driving instructor.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="indicator"><div class="num num--locked">6</div></div>
+        <div class="content content--locked">
+          <h3>Final Driving Test</h3>
+          <p>Pass the behind-the-wheel driving exam and receive your driver's license.</p>
+          <a class="btn btn-secondary btn-sm" href="#">Book Drive Test ↗</a>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

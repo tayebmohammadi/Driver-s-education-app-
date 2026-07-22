@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=390" />
+  <title>Figma Export — Questions &amp; Answers</title>
+  <link rel="stylesheet" href="../shared.css" />
+  <style>
+    .hub-title { font-size: 24px; margin: 12px 0 0; }
+    .desc { color: #64748b; font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
+    .qna-filters { display: flex; gap: 12px; margin-bottom: 20px; }
+    .qna-filters select {
+      flex: 1;
+      padding: 10px 12px;
+      border: 1px solid #dbe3ef;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      background: #fff;
+      color: #0f172a;
+    }
+    .mini-quiz {
+      background: #fff;
+      border: 1px solid #dbe3ef;
+      border-radius: 14px;
+      padding: 20px;
+    }
+    .mini-quiz__counter {
+      font-size: 13px;
+      color: #64748b;
+      margin: 0 0 12px;
+    }
+    .quiz-question__prompt {
+      font-weight: 600;
+      margin: 0 0 12px;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .quiz-question__answers {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 8px;
+    }
+    .quiz-answer-option {
+      width: 100%;
+      text-align: left;
+      padding: 12px 16px;
+      border: 1px solid #dbe3ef;
+      border-radius: 8px;
+      background: #fff;
+      font-size: 15px;
+      font-family: inherit;
+    }
+    .quiz-answer-option--correct {
+      border-color: #059669;
+      background: #ecfdf5;
+    }
+    .quiz-answer-option--wrong {
+      border-color: #ef4444;
+      background: #fef2f2;
+    }
+    .quiz-question__explanation {
+      margin: 12px 0 16px;
+      padding: 12px;
+      background: #f8fafc;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame" data-screen="Questions &amp; Answers">
+    <header class="hub-header">
+      <div class="hub-header-top"><span class="hub-back">← Back</span><span class="hub-logo">DMV Study</span></div>
+      <div class="hours-label"><span>Study Hours</span><strong>12 / 30 hrs</strong></div>
+      <div class="progress-track"><div class="progress-fill" style="width:40%"></div></div>
+      <h1 class="hub-title">Questions &amp; Answers</h1>
+    </header>
+    <main class="hub-main">
+      <p class="desc">Practice mode — instant explanations. No exam pressure.</p>
+
+      <div class="qna-filters">
+        <select>
+          <option>All topics</option>
+          <option>Road Signs</option>
+          <option>Right of Way</option>
+          <option>Parking</option>
+        </select>
+        <button type="button" class="btn btn-secondary btn-sm">New Questions</button>
+      </div>
+
+      <div class="mini-quiz">
+        <p class="mini-quiz__counter">Question 3 of 20</p>
+        <p class="quiz-question__prompt">When approaching a school bus with flashing red lights, you must:</p>
+        <ul class="quiz-question__answers">
+          <li><button type="button" class="quiz-answer-option quiz-answer-option--wrong" disabled>Slow down and pass carefully</button></li>
+          <li><button type="button" class="quiz-answer-option quiz-answer-option--correct" disabled>Stop until the lights stop flashing</button></li>
+          <li><button type="button" class="quiz-answer-option" disabled>Honk and proceed</button></li>
+          <li><button type="button" class="quiz-answer-option" disabled>Pass on the left only</button></li>
+        </ul>
+        <p class="quiz-question__explanation"><strong>Explanation:</strong> California law requires all traffic in both directions to stop when a school bus displays flashing red lights, unless the road is divided by a physical barrier.</p>
+        <button type="button" class="btn btn-primary">Next Question →</button>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

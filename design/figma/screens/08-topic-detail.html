@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=390" />
+  <title>Figma Export — Topic Detail</title>
+  <link rel="stylesheet" href="../shared.css" />
+  <style>
+    .hub-title { font-size: 24px; margin: 12px 0 0; }
+    .desc { color: #64748b; font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
+    h2 { font-size: 18px; margin: 0 0 12px; }
+    .series-lesson-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px;
+      display: grid;
+      gap: 8px;
+    }
+    .series-lesson-list a {
+      display: block;
+      padding: 12px 16px;
+      background: #fff;
+      border: 1px solid #dbe3ef;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #2563eb;
+      font-weight: 500;
+      font-size: 14px;
+    }
+    .mini-quiz {
+      background: #fff;
+      border: 1px solid #dbe3ef;
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 16px;
+    }
+    .mini-quiz__source {
+      font-size: 13px;
+      color: #64748b;
+      margin: 0 0 12px;
+    }
+    .quiz-question__prompt {
+      font-weight: 600;
+      margin: 0 0 12px;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .quiz-question__answers {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 8px;
+    }
+    .quiz-answer-option {
+      width: 100%;
+      text-align: left;
+      padding: 12px 16px;
+      border: 1px solid #dbe3ef;
+      border-radius: 8px;
+      background: #fff;
+      font-size: 15px;
+      font-family: inherit;
+    }
+    .quiz-answer-option--correct {
+      border-color: #059669;
+      background: #ecfdf5;
+    }
+    .quiz-answer-option--wrong {
+      border-color: #ef4444;
+      background: #fef2f2;
+    }
+    .quiz-question__explanation {
+      margin: 12px 0 16px;
+      padding: 12px;
+      background: #f8fafc;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame" data-screen="Topic Detail — Road Signs">
+    <header class="hub-header">
+      <div class="hub-header-top"><span class="hub-back">← Back</span><span class="hub-logo">DMV Study</span></div>
+      <div class="hours-label"><span>Study Hours</span><strong>12 / 30 hrs</strong></div>
+      <div class="progress-track"><div class="progress-fill" style="width:40%"></div></div>
+      <h1 class="hub-title">Road Signs</h1>
+    </header>
+    <main class="hub-main">
+      <p class="desc">Recognize and understand California road signs.</p>
+
+      <h2>Lessons</h2>
+      <ul class="series-lesson-list">
+        <li><a href="#">Regulatory Signs</a></li>
+        <li><a href="#">Warning Signs</a></li>
+        <li><a href="#">Guide &amp; Information Signs</a></li>
+      </ul>
+
+      <h2>Mini Quiz</h2>
+      <div class="mini-quiz">
+        <p class="mini-quiz__source">Regulatory Signs</p>
+        <p class="quiz-question__prompt">What does an octagonal red sign indicate?</p>
+        <ul class="quiz-question__answers">
+          <li><button type="button" class="quiz-answer-option quiz-answer-option--wrong" disabled>Yield to traffic</button></li>
+          <li><button type="button" class="quiz-answer-option quiz-answer-option--correct" disabled>Stop completely</button></li>
+          <li><button type="button" class="quiz-answer-option" disabled>No parking</button></li>
+          <li><button type="button" class="quiz-answer-option" disabled>School zone ahead</button></li>
+        </ul>
+        <p class="quiz-question__explanation">An octagonal red sign is a STOP sign. You must come to a complete stop before proceeding.</p>
+        <button type="button" class="btn btn-primary">Next Question</button>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

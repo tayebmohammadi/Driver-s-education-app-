@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Inter, system-ui, sans-serif;
+  background: #f1f5f9;
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+}
+
+.frame {
+  width: 390px;
+  min-height: 844px;
+  background: #f1f5f9;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.hub-header {
+  background: #fff;
+  border-bottom: 1px solid #dbe3ef;
+  padding: 16px 20px 20px;
+}
+
+.hub-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.hub-back { color: #2563eb; font-size: 14px; font-weight: 500; text-decoration: none; }
+.hub-logo { font-weight: 700; font-size: 16px; color: #0f172a; text-decoration: none; }
+
+.hours-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+
+.progress-track {
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #2563eb;
+  border-radius: 999px;
+}
+
+.hub-main { padding: 24px 20px 48px; }
+
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary { background: #2563eb; color: #fff; }
+.btn-secondary { background: #fff; color: #334155; border: 1px solid #dbe3ef; }
+.btn-sm { padding: 8px 14px; font-size: 13px; }
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-verified { background: #dcfce7; color: #15803d; }
+.badge-unverified { background: #fee2e2; color: #b91c1c; }

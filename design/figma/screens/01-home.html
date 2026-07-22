@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=390" />
+  <title>Figma Export — Home</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .welcome { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
+    .welcome h1 { font-size: 28px; margin-bottom: 8px; }
+    .tagline { color: #64748b; font-size: 14px; }
+    .stats { display: flex; gap: 12px; margin-bottom: 20px; }
+    .stat { flex: 1; background: #fff; border: 1px solid #dbe3ef; border-radius: 14px; padding: 16px; text-align: center; }
+    .stat strong { display: block; font-size: 24px; color: #2563eb; }
+    .stat span { font-size: 13px; color: #64748b; }
+    .journey-banner {
+      display: flex; align-items: center; gap: 16px;
+      background: linear-gradient(135deg, #1e40af, #3b82f6);
+      color: #fff; padding: 20px; border-radius: 16px; margin-bottom: 16px; text-decoration: none;
+    }
+    .journey-banner .icon { font-size: 32px; }
+    .journey-banner strong { display: block; font-size: 18px; }
+    .journey-banner p { margin: 4px 0 0; font-size: 14px; opacity: 0.9; }
+    .journey-banner .arrow { margin-left: auto; font-size: 24px; }
+    .continue {
+      display: block; background: #2563eb; color: #fff; padding: 14px 18px;
+      border-radius: 12px; text-align: center; font-weight: 600; margin-bottom: 24px; text-decoration: none;
+    }
+    .cards { display: flex; flex-direction: column; gap: 14px; }
+    .card {
+      display: flex; gap: 16px; background: #fff; border: 1px solid #dbe3ef;
+      border-radius: 16px; padding: 20px; text-decoration: none; color: inherit;
+    }
+    .card-icon { font-size: 32px; }
+    .card h2 { font-size: 18px; margin-bottom: 4px; }
+    .card-sub { font-size: 13px; font-weight: 600; color: #2563eb; margin-bottom: 6px; }
+    .card-desc { font-size: 14px; color: #64748b; line-height: 1.5; }
+    .card--blue { border-left: 4px solid #3b82f6; }
+    .card--green { border-left: 4px solid #22c55e; }
+    .card--purple { border-left: 4px solid #a855f7; }
+    .card--teal { border-left: 4px solid #14b8a6; }
+    .card--featured { border: 2px solid #3b82f6; border-left: 4px solid #1e40af; }
+  </style>
+</head>
+<body>
+  <div class="frame" data-screen="Home">
+    <header class="hub-header">
+      <div class="hub-header-top">
+        <span class="hub-back">← Back</span>
+        <span class="hub-logo">DMV Study</span>
+      </div>
+      <div class="hours-label"><span>Study Hours</span><strong>12 / 30 hrs</strong></div>
+      <div class="progress-track"><div class="progress-fill" style="width:40%"></div></div>
+    </header>
+    <main class="hub-main">
+      <div class="welcome">
+        <div>
+          <h1>Welcome, Alex</h1>
+          <p class="tagline">California DMV permit study — pass your test with confidence.</p>
+        </div>
+        <button class="btn btn-secondary btn-sm">Sign out</button>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>12h</strong><span>of 30h</span></div>
+        <div class="stat"><strong>5</strong><span>Series done</span></div>
+        <div class="stat"><strong>18</strong><span>Lessons done</span></div>
+      </div>
+      <a class="journey-banner" href="#">
+        <span class="icon">🗺️</span>
+        <div><strong>Driver License Journey</strong><p>6 steps from study to license — start here</p></div>
+        <span class="arrow">→</span>
+      </a>
+      <a class="continue" href="#">Continue: Series 6 — Vehicle Controls →</a>
+      <div class="cards">
+        <a class="card card--featured" href="#"><span class="card-icon">🗺️</span><div><h2>License Journey</h2><p class="card-sub">Your roadmap</p><p class="card-desc">Step-by-step guide from 30 hours of study to getting your driver's license.</p></div></a>
+        <a class="card card--blue" href="#"><span class="card-icon">📚</span><div><h2>Series</h2><p class="card-sub">30 learning modules</p><p class="card-desc">Structured lessons with a final exam for each series.</p></div></a>
+        <a class="card card--green" href="#"><span class="card-icon">🎯</span><div><h2>Study by Topic</h2><p class="card-sub">11 DMV topics</p><p class="card-desc">Learn road signs, rules, parking, and more by category.</p></div></a>
+        <a class="card card--purple" href="#"><span class="card-icon">❓</span><div><h2>Questions &amp; Answers</h2><p class="card-sub">Practice bank</p><p class="card-desc">Random questions with instant explanations. No exam pressure.</p></div></a>
+        <a class="card card--teal" href="#"><span class="card-icon">📊</span><div><h2>My Progress</h2><p class="card-sub">All-in-one tracker</p><p class="card-desc">Study hours, performance insights, weak &amp; strong areas in one place.</p></div></a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

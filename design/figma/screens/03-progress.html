@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Figma Export — My Progress</title>
+  <link rel="stylesheet" href="../shared.css" />
+  <style>
+    .section { background: #fff; border: 1px solid #dbe3ef; border-radius: 16px; padding: 24px; margin-bottom: 20px; }
+    .section-title { font-size: 18px; margin-bottom: 16px; }
+    .hero { text-align: center; background: #f8fafc; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+    .hero-big { font-size: 48px; font-weight: 700; color: #2563eb; }
+    .hero-of { font-size: 20px; color: #64748b; }
+    .hero-remaining { color: #64748b; margin-top: 12px; font-size: 14px; }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+    .stat-card { background: #fff; border: 1px solid #dbe3ef; border-radius: 12px; padding: 18px; text-align: center; }
+    .stat-card strong { display: block; font-size: 28px; color: #2563eb; }
+    .stat-card span { font-size: 14px; color: #334155; }
+    .stat-card small { color: #64748b; font-size: 12px; }
+    .series-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+    .dot {
+      aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+      background: #fff; border: 1px solid #dbe3ef; border-radius: 8px;
+      font-size: 13px; font-weight: 600; color: #64748b;
+    }
+    .dot--done { background: #dcfce7; border-color: #86efac; color: #15803d; }
+    .insight { border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+    .insight--strong { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .insight--weak { background: #fff7ed; border: 1px solid #fed7aa; }
+    .insight h3 { font-size: 15px; margin-bottom: 10px; }
+    .insight li { font-size: 14px; margin-bottom: 8px; list-style: none; }
+    .cat-row { margin-bottom: 16px; }
+    .cat-header { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 6px; }
+    .score-weak { color: #b45309; }
+    .score-strong { color: #15803d; }
+    .fill-weak { background: #f97316; }
+    .fill-strong { background: #22c55e; }
+    .activity { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .activity-item { background: #f8fafc; border-radius: 12px; padding: 20px; text-align: center; }
+    .activity-item strong { display: block; font-size: 32px; color: #2563eb; }
+    .hub-title { font-size: 24px; margin: 12px 0 0; }
+  </style>
+</head>
+<body>
+  <div class="frame" data-screen="My Progress">
+    <header class="hub-header">
+      <div class="hub-header-top"><span class="hub-back">← Back</span><span class="hub-logo">DMV Study</span></div>
+      <div class="hours-label"><span>Study Hours</span><strong>12 / 30 hrs</strong></div>
+      <div class="progress-track"><div class="progress-fill" style="width:40%"></div></div>
+      <h1 class="hub-title">My Progress</h1>
+    </header>
+    <main class="hub-main">
+      <section class="section">
+        <h2 class="section-title">Study Progress</h2>
+        <div class="hero">
+          <div><span class="hero-big">12</span><span class="hero-of">/ 30 hours</span></div>
+          <div class="progress-track" style="height:12px;margin:16px auto;max-width:320px"><div class="progress-fill" style="width:40%"></div></div>
+          <p class="hero-remaining">18 hours remaining</p>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card"><strong>18</strong><span>Lessons completed</span><small>of 46</small></div>
+          <div class="stat-card"><strong>5</strong><span>Series completed</span><small>of 30</small></div>
+          <div class="stat-card"><strong>3</strong><span>Exams completed</span></div>
+          <div class="stat-card"><strong>142</strong><span>Questions answered</span></div>
+        </div>
+        <div class="series-grid">
+          <div class="dot dot--done">1</div><div class="dot dot--done">2</div><div class="dot dot--done">3</div>
+          <div class="dot dot--done">4</div><div class="dot dot--done">5</div><div class="dot">6</div>
+          <div class="dot">7</div><div class="dot">8</div><div class="dot">9</div><div class="dot">10</div>
+          <div class="dot">11</div><div class="dot">12</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Performance Insights</h2>
+        <div class="insight insight--strong">
+          <h3>Strong Topics</h3>
+          <ul><li>🅿️ Parking — <strong>90%</strong></li><li>🛑 Road Signs — <strong>85%</strong></li></ul>
+        </div>
+        <div class="insight insight--weak">
+          <h3>Weak Topics — Study These</h3>
+          <ul><li>↔️ Right of Way — <strong>60%</strong></li><li>🚫 Alcohol &amp; Drugs — <strong>55%</strong></li></ul>
+        </div>
+        <h3 style="font-size:15px;margin-bottom:16px">Accuracy by Category</h3>
+        <div class="cat-row">
+          <div class="cat-header"><span>Right of Way</span><strong class="score-weak">60%</strong></div>
+          <div class="progress-track"><div class="progress-fill fill-weak" style="width:60%"></div></div>
+        </div>
+        <div class="cat-row">
+          <div class="cat-header"><span>Road Signs</span><strong class="score-strong">85%</strong></div>
+          <div class="progress-track"><div class="progress-fill fill-strong" style="width:85%"></div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Activity Summary</h2>
+        <div class="activity">
+          <div class="activity-item"><strong>142</strong><span>Total questions answered</span></div>
+          <div class="activity-item"><strong>3</strong><span>Exams completed</span></div>
+        </div>
+      </section>
+      <a class="btn btn-primary" href="#" style="display:block;text-align:center;padding:14px">View License Journey →</a>
+    </main>
+  </div>
+</body>
+</html>

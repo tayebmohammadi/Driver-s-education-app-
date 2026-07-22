@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=390" />
+  <title>Figma Export — Study by Topic</title>
+  <link rel="stylesheet" href="../shared.css" />
+  <style>
+    .hub-title { font-size: 24px; margin: 12px 0 0; }
+    .desc { color: #64748b; font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
+    .topic-grid { display: grid; gap: 12px; }
+    .topic-card {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: #fff;
+      border: 1px solid #dbe3ef;
+      border-radius: 14px;
+      padding: 18px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .topic-card__icon { font-size: 28px; line-height: 1; }
+    .topic-card h3 { margin: 0 0 4px; font-size: 16px; }
+    .topic-card p { margin: 0; font-size: 14px; color: #64748b; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <div class="frame" data-screen="Study by Topic">
+    <header class="hub-header">
+      <div class="hub-header-top"><span class="hub-back">← Back</span><span class="hub-logo">DMV Study</span></div>
+      <div class="hours-label"><span>Study Hours</span><strong>12 / 30 hrs</strong></div>
+      <div class="progress-track"><div class="progress-fill" style="width:40%"></div></div>
+      <h1 class="hub-title">Study by Topic</h1>
+    </header>
+    <main class="hub-main">
+      <p class="desc">Learn by category — each topic includes lessons and mini quizzes.</p>
+      <div class="topic-grid">
+        <a class="topic-card" href="#"><span class="topic-card__icon">🛑</span><div><h3>Road Signs</h3><p>Recognize and understand California road signs.</p></div></a>
+        <a class="topic-card" href="#"><span class="topic-card__icon">📋</span><div><h3>Rules of the Road</h3><p>Traffic laws, speed limits, and lane rules.</p></div></a>
+        <a class="topic-card" href="#"><span class="topic-card__icon">↔️</span><div><h3>Right of Way</h3><p>Who goes first at intersections and merges.</p></div></a>
+        <a class="topic-card" href="#"><span class="topic-card__icon">🅿️</span><div><h3>Parking</h3><p>Parking rules, zones, and hill parking.</p></div></a>
+        <a class="topic-card" href="#"><span class="topic-card__icon">🔀</span><div><h3>Intersections</h3><p>Signals, signs, and safe intersection navigation.</p></div></a>
+        <a class="topic-card" href="#"><span class="topic-card__icon">🛣️</span><div><h3>Freeway Driving</h3><p>Entering, merging, and exiting freeways safely.</p></div></a>
+        <a class="topic-card" href="#"><span class="topic-card__icon">🌙</span><div><h3>Night Driving</h3><p>Headlights, visibility, and night hazards.</p></div></a>
+        <a class="topic-card" href="#"><span class="topic-card__icon">🛡️</span><div><h3>Defensive Driving</h3><p>Anticipate hazards and protect yourself.</p></div></a>
+        <a class="topic-card" href="#"><span class="topic-card__icon">🚫</span><div><h3>Alcohol &amp; Drugs</h3><p>DUI laws, BAC limits, and consequences.</p></div></a>
+        <a class="topic-card" href="#"><span class="topic-card__icon">📵</span><div><h3>Distracted Driving</h3><p>Phone use, distractions, and focus.</p></div></a>
+        <a class="topic-card" href="#"><span class="topic-card__icon">🚨</span><div><h3>Emergency Situations</h3><p>Breakdowns, collisions, and emergencies.</p></div></a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
