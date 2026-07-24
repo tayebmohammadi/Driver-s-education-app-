@@ -12,14 +12,16 @@ import {
   AuthSelect,
   useAuthForm,
 } from "@/components/auth/auth-form";
+import { getSafeStudentRedirect } from "@/lib/auth/safe-redirect";
 
 function RegisterContent() {
   const searchParams = useSearchParams();
   const { error, success, isLoading, submit, setError } = useAuthForm();
-  const redirectTo = searchParams.get("redirect") ?? "/home?welcome=1";
-  const loginHref = redirectTo.startsWith("/")
-    ? `/login?redirect=${encodeURIComponent(redirectTo)}`
-    : "/login";
+  const redirectTo = getSafeStudentRedirect(
+    searchParams.get("redirect"),
+    "/home?welcome=1"
+  );
+  const loginHref = `/login?redirect=${encodeURIComponent(redirectTo)}`;
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -46,7 +48,7 @@ function RegisterContent() {
         confirmPassword,
         acceptTerms: formData.get("acceptTerms") === "true",
       },
-      { redirectTo: `/home?welcome=1` }
+      { redirectTo }
     );
   }
 

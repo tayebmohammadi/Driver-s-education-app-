@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { isDemoAutoLoginEnabled } from "@/lib/auth/demo-mode";
 import { verifyToken, COOKIE_NAME } from "@/lib/auth/jwt";
+import { getSafeStudentRedirect } from "@/lib/auth/safe-redirect";
 
 const PROTECTED_ROUTES = [
   "/dashboard",
@@ -60,8 +61,9 @@ export async function middleware(request: NextRequest) {
   if (isAuthRoute && session) {
     const validateUrl = new URL("/api/auth/validate-session", request.url);
     const redirectParam = request.nextUrl.searchParams.get("redirect");
-    if (redirectParam?.startsWith("/") && !redirectParam.startsWith("//")) {
-      validateUrl.searchParams.set("redirect", redirectParam);
+    const destination = getSafeStudentRedirect(redirectParam, "");
+    if (destination) {
+      validateUrl.searchParams.set("redirect", destination);
     }
     return NextResponse.redirect(validateUrl);
   }

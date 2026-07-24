@@ -32,6 +32,7 @@ function isTheoryTab(pathname: string) {
 }
 
 const HIDDEN_PREFIXES = [
+  "/get-started",
   "/login",
   "/register",
   "/forgot-password",

@@ -9,6 +9,10 @@ import {
   AuthForm,
   AuthLink,
 } from "@/components/auth/auth-form";
+import {
+  getSafeRoleRedirect,
+  getSafeStudentRedirect,
+} from "@/lib/auth/safe-redirect";
 
 function LoginContent() {
   const searchParams = useSearchParams();
@@ -16,10 +20,8 @@ function LoginContent() {
   const [success, setSuccess] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const redirectTo = searchParams.get("redirect") ?? "/home";
-  const registerHref = redirectTo.startsWith("/")
-    ? `/register?redirect=${encodeURIComponent(redirectTo)}`
-    : "/register";
+  const redirectTo = getSafeStudentRedirect(searchParams.get("redirect"));
+  const registerHref = `/register?redirect=${encodeURIComponent(redirectTo)}`;
 
   useEffect(() => {
     const verified = searchParams.get("verified");
@@ -68,7 +70,9 @@ function LoginContent() {
         return;
       }
 
-      const destination = data.user?.role === "ADMIN" ? "/admin" : redirectTo;
+      const destination = data.user?.role
+        ? getSafeRoleRedirect(redirectTo, data.user.role)
+        : "/home";
       window.location.href = destination;
     } catch {
       setError("Network error. Please try again.");

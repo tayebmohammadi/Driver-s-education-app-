@@ -28,6 +28,9 @@ interface JourneyData {
   certificateEligible: boolean;
 }
 
+// Temporary: allow every journey step to be reviewed without changing progress.
+const JOURNEY_INSPECTION_MODE = true;
+
 export default function JourneyPage() {
   const [journey, setJourney] = useState<JourneyData | null>(null);
 
@@ -51,12 +54,28 @@ export default function JourneyPage() {
         Your step-by-step roadmap to getting a California driver&apos;s license.
       </p>
 
+      {JOURNEY_INSPECTION_MODE ? (
+        <div className="journey-inspection-notice">
+          <strong>Inspection mode is on</strong>
+          <span>
+            All steps are open for review. Your actual completion progress has
+            not been changed.
+          </span>
+        </div>
+      ) : null}
+
       <div className="journey-steps">
-        {journey.steps.map((step, index) => (
-          <div
-            key={step.number}
-            className={`journey-step journey-step--${step.status}`}
-          >
+        {journey.steps.map((step, index) => {
+          const displayStatus =
+            JOURNEY_INSPECTION_MODE && step.status === "locked"
+              ? "active"
+              : step.status;
+
+          return (
+            <div
+              key={step.number}
+              className={`journey-step journey-step--${displayStatus}`}
+            >
             <div className="journey-step__indicator">
               <span className="journey-step__num">
                 {step.status === "complete" ? "✓" : step.number}
@@ -98,7 +117,8 @@ export default function JourneyPage() {
               ) : null}
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
 
       {journey.certificateEligible ? (

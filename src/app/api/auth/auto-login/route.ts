@@ -3,16 +3,11 @@ import { createSessionRedirect } from "@/lib/auth/auth-response";
 import { DEMO_STUDENT_EMAIL } from "@/lib/auth/demo-student";
 import { prisma } from "@/lib/prisma";
 import { toSafeUser } from "@/types/auth";
+import { getSafeStudentRedirect } from "@/lib/auth/safe-redirect";
 
 function getRedirectDestination(request: NextRequest) {
   const redirectParam = request.nextUrl.searchParams.get("redirect");
-  const defaultRedirect = "/home";
-
-  if (redirectParam?.startsWith("/") && !redirectParam.startsWith("//")) {
-    return redirectParam;
-  }
-
-  return defaultRedirect;
+  return getSafeStudentRedirect(redirectParam);
 }
 
 export async function GET(request: NextRequest) {
@@ -24,8 +19,9 @@ export async function GET(request: NextRequest) {
     if (!user) {
       const loginUrl = new URL("/login", request.url);
       const redirectParam = request.nextUrl.searchParams.get("redirect");
-      if (redirectParam?.startsWith("/") && !redirectParam.startsWith("//")) {
-        loginUrl.searchParams.set("redirect", redirectParam);
+      const destination = getSafeStudentRedirect(redirectParam, "");
+      if (destination) {
+        loginUrl.searchParams.set("redirect", destination);
       }
       return NextResponse.redirect(loginUrl);
     }
