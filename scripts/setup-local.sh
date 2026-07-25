@@ -51,7 +51,7 @@ echo "→ Running migrations..."
 npx prisma migrate deploy
 
 echo "→ Seeding California DMV content..."
-npm run db:seed
+ALLOW_DESTRUCTIVE_SEED=true npm run db:seed
 
 echo ""
 echo "✓ Database ready!"

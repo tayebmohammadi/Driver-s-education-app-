@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { DRIVE_INSTRUCTORS } from "@/lib/drive/instructors-data";
 import { formatDrivePrice } from "@/lib/drive/pricing";
+import { formatDistanceMiles } from "@/lib/drive/geo-utils";
 
 function ArrowIcon() {
   return (
@@ -106,7 +107,7 @@ const paths = [
     eyebrow: "Start behind the wheel",
     description:
       "Already have a permit or license? Find lessons for skill building, a refresher, local-road confidence, or road-test preparation.",
-    items: ["Browse lesson options", "Compare availability", "Choose an instructor"],
+    items: ["Browse sample lesson options", "Compare example availability", "Preview an instructor"],
     href: "/get-started?path=lessons",
   },
 ];
@@ -128,14 +129,16 @@ const capabilities = [
     icon: RoadIcon,
   },
   {
-    title: "Instructor availability",
-    description: "Compare driving-school instructors, service areas, vehicles, pricing, and open times.",
+    title: "Marketplace preview",
+    description: "Compare sample instructor profiles, service areas, vehicles, pricing, and example availability.",
     icon: UsersIcon,
+    status: "Preview",
   },
   {
-    title: "Lesson scheduling",
-    description: "Choose a lesson package, pickup location, date, and available time in one flow.",
+    title: "Scheduling interface preview",
+    description: "Explore how a lesson package, pickup location, date, and time could be selected. No booking is created.",
     icon: CalendarIcon,
+    status: "Preview",
   },
   {
     title: "Professional + supervised-hour tracking",
@@ -167,7 +170,7 @@ const faqs = [
   {
     question: "Can adults book driving lessons?",
     answer:
-      "Yes. Adults can use the driving-lesson experience without following the mandatory teen Driver’s Ed path.",
+      "Yes. Adults can explore the driving-lesson experience without following the teen Driver’s Ed path. Current profiles and availability are marketplace previews rather than live bookings.",
   },
   {
     question: "When can a teen begin behind-the-wheel training?",
@@ -177,12 +180,12 @@ const faqs = [
   {
     question: "Can I book lessons if I took Driver’s Ed somewhere else?",
     answer:
-      "Yes. Permit holders and licensed drivers can go directly to driving lessons without completing this platform’s online course.",
+      "Yes. Permit holders and licensed drivers can explore lesson options without completing this platform’s online course. Live partner booking is not yet available.",
   },
   {
     question: "How do driving-school partnerships work?",
     answer:
-      "The planned partner experience lets schools present their service area, instructors, lesson options, pricing, and availability so students can find a suitable lesson. Partner enrollment and portal tools are not part of this landing-page release.",
+      "A future partner experience could present school and lesson information. Partner enrollment, verification, and school-management tools are not currently available.",
   },
 ];
 
@@ -224,8 +227,8 @@ export default async function RootPage() {
           <p className="public-eyebrow">California driver education + lessons</p>
           <h1>From driver&apos;s ed to your California license—all in one place.</h1>
           <p className="public-hero__lead">
-            Complete driver&apos;s education, prepare for your permit, book
-            behind-the-wheel lessons with driving-school professionals, and
+            Complete driver&apos;s education, prepare for your permit, explore
+            behind-the-wheel lesson options, and
             track every step toward your license.
           </p>
           <div className="public-hero__actions">
@@ -364,6 +367,7 @@ export default async function RootPage() {
         <div className="public-instructor-grid">
           {instructorPreview.map((instructor) => (
             <article className="public-instructor-card" key={instructor.id}>
+              <p className="public-eyebrow">Sample instructor</p>
               <div className="public-instructor-card__head">
                 <span className="public-instructor-card__avatar" aria-hidden="true">
                   {initials(instructor.name)}
@@ -372,15 +376,15 @@ export default async function RootPage() {
                   <h3>{instructor.name}</h3>
                   <p>{instructor.drivingSchoolName}</p>
                 </div>
-                <span className="public-instructor-card__rating" aria-label={`${instructor.rating} out of 5 stars`}>
-                  ★ {instructor.rating}
+                <span className="public-instructor-card__rating" aria-label={`Sample rating ${instructor.rating} out of 5`}>
+                  ★ {instructor.rating} sample
                 </span>
               </div>
               <dl>
                 <div><dt>Lesson price</dt><dd>From {formatDrivePrice(instructor.hourlyRate)}/hr</dd></div>
                 <div><dt>Vehicle</dt><dd>{instructor.vehicle} · {instructor.transmission}</dd></div>
-                <div><dt>Service area</dt><dd>{instructor.area} · {(instructor.distanceKm * 0.621371).toFixed(1)} mi</dd></div>
-                <div><dt>Next availability</dt><dd className="is-available">{instructor.availability}</dd></div>
+                <div><dt>Service area</dt><dd>{instructor.area} · {formatDistanceMiles(instructor.distanceKm)}</dd></div>
+                <div><dt>Example availability</dt><dd className="is-available">{instructor.availability}</dd></div>
               </dl>
               <Link href={`/drive/instructors/${instructor.id}`}>
                 View Lessons <ArrowIcon />
@@ -389,8 +393,8 @@ export default async function RootPage() {
           ))}
         </div>
         <p className="public-lessons__disclosure">
-          Preview reflects the lesson listings currently configured in the platform.
-          Availability and pricing should be confirmed during scheduling.
+          Marketplace preview uses sample instructor, school, rating, pricing, and
+          availability information. Live listings will require partner verification.
         </p>
       </section>
 
@@ -433,9 +437,9 @@ export default async function RootPage() {
         </div>
         <ul>
           <li><CheckIcon /><span><strong>California-focused journey</strong>Course and roadmap content organized around California learners.</span></li>
-          <li><CheckIcon /><span><strong>School and instructor context</strong>See the school, instructor, vehicle, service area, and available times together.</span></li>
-          <li><CheckIcon /><span><strong>Transparent lesson pricing</strong>Review hourly prices and packages before selecting a lesson.</span></li>
-          <li><CheckIcon /><span><strong>Connected progress</strong>Keep study, practice, and licensing milestones visible in one experience.</span></li>
+          <li><CheckIcon /><span><strong>Marketplace preview</strong>Compare sample school, instructor, vehicle, service-area, and availability details together.</span></li>
+          <li><CheckIcon /><span><strong>Example lesson pricing</strong>Preview how hourly prices and packages can be compared.</span></li>
+          <li><CheckIcon /><span><strong>Connected learning</strong>Keep recorded study progress and the high-level license roadmap visible in one experience.</span></li>
         </ul>
       </section>
 
@@ -443,10 +447,10 @@ export default async function RootPage() {
         <div className="public-partners__icon" aria-hidden="true"><CarIcon /></div>
         <div>
           <p className="public-eyebrow">For driving schools</p>
-          <h2 id="partners-title">Grow your school with qualified students and simpler scheduling.</h2>
+          <h2 id="partners-title">Preview a future marketplace presence for your school.</h2>
           <p>
-            Present your instructors, service areas, lesson options, pricing, and
-            availability where learners are already planning their next step.
+            A future partner program could present school, instructor, lesson,
+            pricing, and availability information. Enrollment is not currently open.
           </p>
         </div>
         <button
@@ -455,8 +459,8 @@ export default async function RootPage() {
           aria-disabled="true"
           title="Partner applications are coming soon"
         >
-          Partner With Us
-          <span className="public-button__soon">Coming soon</span>
+          Partner program
+          <span className="public-button__soon">Planned</span>
         </button>
       </section>
 

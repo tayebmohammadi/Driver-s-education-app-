@@ -8,7 +8,7 @@ import { InstructorPhoto } from "@/components/drive/instructor-photo";
 import { InstructorPricing } from "@/components/drive/instructor-pricing";
 import type { DriveInstructor } from "@/lib/drive/config";
 import { DRIVE_INSTRUCTORS } from "@/lib/drive/config";
-import { distanceKm, formatDistanceKm } from "@/lib/drive/geo-utils";
+import { distanceKm, formatDistanceMiles } from "@/lib/drive/geo-utils";
 import type { SacramentoInstructorPin } from "@/lib/drive/sacramento-map";
 import { saveDriveSetup } from "@/lib/drive/drive-setup-storage";
 
@@ -137,13 +137,13 @@ export function DriveInstructorsSection({
             <>Finding your location…</>
           ) : userLocation ? (
             <>
-              <strong>{mapPins.length} instructors</strong> near you — sorted
+              <strong>{mapPins.length} sample instructors</strong> near you — sorted
               closest first. Nearest: <strong>{closest?.name}</strong> (
-              {closest ? formatDistanceKm(closest.distanceKm) : ""})
+              {closest ? formatDistanceMiles(closest.distanceKm) : ""})
             </>
           ) : (
             <>
-              Showing instructors in Sacramento. We couldn&apos;t pin{" "}
+              Showing sample instructors in Sacramento. We couldn&apos;t pin{" "}
               <strong>{address}</strong> — try a full street address.
             </>
           )}
@@ -212,6 +212,7 @@ export function DriveInstructorsSection({
                 <InstructorPhoto instructor={instructor} />
                 <div className="drive-instructor-card__body">
                   <h2>{instructor.name}</h2>
+                  <p className="drive-section-label">Sample instructor</p>
                   <p className="drive-instructor-card__school">{instructor.drivingSchoolName}</p>
                   <InstructorPricing
                     packages={instructor.packages}
@@ -219,19 +220,19 @@ export function DriveInstructorsSection({
                     compact
                   />
                   <p className="drive-instructor-card__rating">
-                    ★★★★★ {instructor.rating}{" "}
-                    <span>({instructor.reviewCount})</span>
+                    Sample rating ★ {instructor.rating}{" "}
+                    <span>({instructor.reviewCount} sample reviews)</span>
                   </p>
                   <p className="drive-instructor-card__vehicle">
                     🚗 {instructor.vehicle} · {instructor.transmission}
                     {userLocation ? (
                       <span className="drive-instructor-card__distance">
-                        {formatDistanceKm(instructor.distanceKm)}
+                        {formatDistanceMiles(instructor.distanceKm)}
                       </span>
                     ) : null}
                   </p>
                   <span className="drive-instructor-card__availability">
-                    ● {instructor.availability}
+                    ● Example availability: {instructor.availability}
                   </span>
                 </div>
                 <div className="drive-instructor-card__actions">
@@ -266,6 +267,7 @@ export function DriveInstructorsSection({
               <InstructorPhoto instructor={instructor} />
               <div className="drive-instructor-card__body">
                 <h2>{instructor.name}</h2>
+                <p className="drive-section-label">Sample instructor</p>
                 <p className="drive-instructor-card__school">{instructor.drivingSchoolName}</p>
                 <InstructorPricing
                   packages={instructor.packages}
@@ -273,19 +275,19 @@ export function DriveInstructorsSection({
                   compact
                 />
                 <p className="drive-instructor-card__rating">
-                  ★★★★★ {instructor.rating}{" "}
-                  <span>({instructor.reviewCount})</span>
+                  Sample rating ★ {instructor.rating}{" "}
+                  <span>({instructor.reviewCount} sample reviews)</span>
                 </p>
                 <p className="drive-instructor-card__vehicle">
                   🚗 {instructor.vehicle} · {instructor.transmission}
                   {userLocation ? (
                     <span className="drive-instructor-card__distance">
-                      {formatDistanceKm(instructor.distanceKm)}
+                      {formatDistanceMiles(instructor.distanceKm)}
                     </span>
                   ) : null}
                 </p>
                 <span className="drive-instructor-card__availability">
-                  ● {instructor.availability}
+                  ● Example availability: {instructor.availability}
                 </span>
               </div>
               <span className="drive-instructor-card__chevron">›</span>

@@ -5,7 +5,9 @@ import {
   seedCourse,
 } from "./seed-curriculum";
 import { seedDemoUser, seedPlatformExtras } from "./seed-extras";
+import { assertDestructiveSeedAllowed } from "./seed-guard";
 
+assertDestructiveSeedAllowed();
 const prisma = new PrismaClient();
 
 async function clearLearningData() {

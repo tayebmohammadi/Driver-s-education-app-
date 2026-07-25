@@ -10,6 +10,7 @@ import {
   useState,
 } from "react";
 import type { UserRole } from "@prisma/client";
+import { GET_STARTED_STORAGE_KEY } from "@/lib/get-started-storage";
 
 type LandingPath = "teen" | "adult" | "lessons";
 type Helping = "self" | "teenager";
@@ -54,7 +55,6 @@ interface GetStartedFlowProps {
   role: UserRole | null;
 }
 
-const STORAGE_KEY = "dmv-study:get-started";
 const MAX_STEP = 5;
 
 const HELPING_OPTIONS: { value: Helping; title: string; description: string }[] = [
@@ -325,7 +325,7 @@ function GetStartedContent({ signedIn, role }: GetStartedFlowProps) {
 
   useEffect(() => {
     try {
-      const stored = window.localStorage.getItem(STORAGE_KEY);
+      const stored = window.localStorage.getItem(GET_STARTED_STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored) as Partial<Answers>;
         setAnswers((current) => ({
@@ -348,7 +348,7 @@ function GetStartedContent({ signedIn, role }: GetStartedFlowProps) {
         }));
       }
     } catch {
-      window.localStorage.removeItem(STORAGE_KEY);
+      window.localStorage.removeItem(GET_STARTED_STORAGE_KEY);
     } finally {
       setHydrated(true);
     }
@@ -356,7 +356,7 @@ function GetStartedContent({ signedIn, role }: GetStartedFlowProps) {
 
   useEffect(() => {
     if (!hydrated) return;
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(answers));
+    window.localStorage.setItem(GET_STARTED_STORAGE_KEY, JSON.stringify(answers));
   }, [answers, hydrated]);
 
   useEffect(() => {

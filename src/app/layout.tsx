@@ -24,8 +24,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <InvalidSessionGuard />
-        {children}
         <AppBottomNav />
+        {children}
       </body>
     </html>
   );

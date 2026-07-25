@@ -16,7 +16,7 @@ type InstructorBookingPanelProps = {
 
 export function InstructorBookingPanel({
   instructor,
-  confirmLabel = "Confirm lesson",
+  confirmLabel = "Review selected time",
   onConfirm,
 }: InstructorBookingPanelProps) {
   const [selectedDay, setSelectedDay] = useState(
@@ -87,7 +87,7 @@ export function InstructorBookingPanel({
         </button>
       </div>
       <p className="drive-schedule__note">
-        Free cancellation up to 48h before the lesson
+        Example availability only. Selecting a time does not create a confirmed booking.
       </p>
     </div>
   );

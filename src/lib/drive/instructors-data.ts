@@ -47,13 +47,13 @@ export interface DriveInstructor {
 export const DRIVE_DRIVING_SCHOOLS: DriveDrivingSchool[] = [
   {
     id: "capital-city-driving",
-    name: "Capital City Driving School",
+    name: "Capital City Driving School — sample profile",
     city: "Sacramento",
     licenseNumber: "DS-4821",
   },
   {
     id: "sacramento-safe-driver",
-    name: "Sacramento Safe Driver Academy",
+    name: "Sacramento Safe Driver Academy — sample profile",
     city: "Sacramento",
     licenseNumber: "DS-5190",
   },
@@ -178,16 +178,16 @@ const VEHICLES = [
 ];
 
 const BIOS = [
-  "Certified instructor specializing in nervous beginners and highway confidence.",
-  "Patient, calm teaching style focused on city and suburban driving skills.",
-  "Experienced with DMV test routes and automatic vehicle training.",
-  "Former examiner who helps students pass on their first attempt.",
-  "Bilingual instructor with a strong track record for teen drivers.",
-  "Highway and parallel parking specialist serving Sacramento neighborhoods.",
-  "Structured lessons with clear feedback after every session.",
-  "Friendly coach who builds confidence behind the wheel quickly.",
-  "Expert in defensive driving and hazard awareness training.",
-  "Flexible scheduling with evening and weekend availability.",
+  "Sample profile focused on nervous beginners and highway confidence.",
+  "Sample profile describing a calm approach to city and suburban driving skills.",
+  "Sample profile illustrating road-test and automatic-vehicle lesson options.",
+  "Sample profile illustrating structured road-test preparation.",
+  "Sample bilingual profile illustrating lesson options for teen drivers.",
+  "Sample profile focused on freeway and parallel-parking practice.",
+  "Sample profile illustrating structured lessons and session feedback.",
+  "Sample profile focused on confidence-building behind the wheel.",
+  "Sample profile illustrating defensive-driving and hazard-awareness training.",
+  "Sample profile with example evening and weekend availability.",
 ];
 
 const AVAILABILITY = [
@@ -210,11 +210,11 @@ const LANGUAGE_SETS = [
 ];
 
 const CERTIFICATIONS = [
-  "State-certified · DMV approved",
-  "State-certified · ADI qualified",
-  "State-certified · 10+ years",
-  "State-certified · defensive driving",
-  "State-certified · teen specialist",
+  "Credentials not yet verified · sample profile",
+  "Credentials not yet verified · sample profile",
+  "Experience details are sample information",
+  "Training details are sample information",
+  "Specialty details are sample information",
 ];
 
 const HOURS = [

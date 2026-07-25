@@ -12,7 +12,7 @@ function formatPrice(amount: number) {
 export default function DrivePacksPage() {
   return (
     <DriveLayout shell="detail">
-      <p className="drive-section-label drive-section-label--caps">Choose your pack</p>
+      <p className="drive-section-label drive-section-label--caps">Sample lesson packages</p>
 
       <div className="drive-packs">
         {DRIVE_PACKS.map((pack) => {
@@ -66,8 +66,8 @@ export default function DrivePacksPage() {
           ★★★★★
         </span>
         <p>
-          <strong>4.7 / 5</strong>
-          <span> · Over 18,000 student reviews</span>
+          <strong>Marketplace preview</strong>
+          <span> · Example pricing and packages</span>
         </p>
       </div>
     </DriveLayout>

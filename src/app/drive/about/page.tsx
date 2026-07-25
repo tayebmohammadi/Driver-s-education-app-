@@ -44,7 +44,7 @@ export default function DriveAboutPage() {
             🎓
           </span>
           <strong>For Students</strong>
-          <span>Search, compare, and book lessons</span>
+          <span>Preview lesson profiles and scheduling</span>
         </button>
         <button
           type="button"
@@ -63,12 +63,12 @@ export default function DriveAboutPage() {
         </button>
       </div>
 
-      <div className="drive-about-video">
-        <button type="button" className="drive-about-video__play" aria-label="Watch the intro">
-          ▶
-        </button>
-        <p>Watch the intro</p>
-        <span className="drive-about-video__duration">4 min</span>
+        <div className="drive-about-video">
+        <span className="drive-about-video__play" aria-hidden="true">
+          ◇
+        </span>
+        <p>Marketplace experience preview</p>
+        <span className="drive-about-video__duration">Sample</span>
       </div>
 
       <div className="drive-about-stats">
@@ -116,7 +116,7 @@ export default function DriveAboutPage() {
               </Link>
             ) : (
               <Link href="/drive/about#how-it-works" className="btn btn-primary drive-how-it-works__cta">
-                List Your Driving School
+                Preview Partner Experience
               </Link>
             )}
           </div>
@@ -148,18 +148,14 @@ export default function DriveAboutPage() {
 
       {howItWorksTab === "students" ? (
         <section className="drive-about-testimonial" id="reviews">
-          <span className="drive-social-proof__stars" aria-hidden>
-            ★★★★★
-          </span>
+          <p className="drive-section-label drive-section-label--caps">
+            Marketplace preview
+          </p>
           <blockquote>
-            &ldquo;I passed first attempt after just 18 hours. The app made everything so
-            easy — booking, tracking progress, even the theory. Way cheaper than my
-            friends paid at a traditional school.&rdquo;
+            Instructor profiles, ratings, reviews, packages, and schedules shown
+            in this experience are sample information for product evaluation.
           </blockquote>
-          <footer>— Sophie T. · Passed 3 weeks ago</footer>
-          <Link href="#reviews" className="drive-about-testimonial__more">
-            See more reviews →
-          </Link>
+          <footer>Live partner verification and booking are not yet available.</footer>
         </section>
       ) : null}
 
@@ -189,9 +185,9 @@ export default function DriveAboutPage() {
 
       <div className="drive-about-cta-block">
         <Link href="/drive/packs" className="btn btn-primary btn-lg drive-about-cta">
-          Get started — it&apos;s free
+          Explore Sample Packages
         </Link>
-        <p>No commitment · Cancel anytime</p>
+        <p>Preview only · No booking or payment is created</p>
       </div>
     </DriveLayout>
   );

@@ -8,6 +8,7 @@ import { InstructorBookingPanel } from "@/components/drive/instructor-booking-pa
 import { InstructorPhoto } from "@/components/drive/instructor-photo";
 import { InstructorPricing } from "@/components/drive/instructor-pricing";
 import { formatDrivePrice } from "@/lib/drive/pricing";
+import { formatDistanceMiles } from "@/lib/drive/geo-utils";
 import { getDriveInstructor } from "@/lib/drive/config";
 import {
   loadDriveSetup,
@@ -78,11 +79,12 @@ function InstructorProfileContent() {
       <div className="drive-profile">
         <div className="drive-profile__main">
           <h1>{instructor.name}</h1>
+          <p className="drive-section-label drive-section-label--caps">Sample instructor profile</p>
           <p className="drive-profile__school">{instructor.drivingSchoolName}</p>
           <p className="drive-profile__bio">{instructor.bio}</p>
           <p className="drive-profile__meta">
-            ★ {instructor.rating} ({instructor.reviewCount})
-            {hasAddress ? ` · 📍 ${instructor.distanceKm} km` : null}
+            Sample rating ★ {instructor.rating} ({instructor.reviewCount} sample reviews)
+            {hasAddress ? ` · 📍 ${formatDistanceMiles(instructor.distanceKm)}` : null}
             {` · ${formatDrivePrice(instructor.hourlyRate)}/hr`}
           </p>
           <span className="drive-badge drive-badge--neutral">
@@ -97,18 +99,18 @@ function InstructorProfileContent() {
               About
             </button>
             <button type="button" className="drive-subtabs__tab">
-              Reviews
+              Sample reviews
             </button>
           </div>
 
           <div className="drive-profile__stats">
             <div>
               <strong>{instructor.students}</strong>
-              <span>students</span>
+              <span>sample learners</span>
             </div>
             <div>
               <strong>{instructor.experienceYears}y</strong>
-              <span>experience</span>
+              <span>sample experience</span>
             </div>
           </div>
 
@@ -136,7 +138,7 @@ function InstructorProfileContent() {
               <dd>{instructor.certification}</dd>
             </div>
             <div>
-              <dt>🕐 Available hours</dt>
+              <dt>🕐 Example hours</dt>
               <dd>{instructor.hours}</dd>
             </div>
           </dl>
@@ -145,7 +147,7 @@ function InstructorProfileContent() {
         <aside className="drive-profile__aside">
           <InstructorPhoto instructor={instructor} size="profile" />
           <span className="drive-instructor-card__availability">
-            ● {instructor.availability}
+            ● Example availability: {instructor.availability}
           </span>
           {isFirstTimePick && hasAddress ? (
             <button
@@ -153,7 +155,7 @@ function InstructorProfileContent() {
               className="btn btn-primary btn-sm"
               onClick={chooseInstructor}
             >
-              Choose as my instructor
+              Select sample profile
             </button>
           ) : (
             <Link href="/drive/packs" className="btn btn-primary btn-sm">
@@ -169,11 +171,11 @@ function InstructorProfileContent() {
       />
 
       <section className="drive-schedule">
-        <h2>Available slots this week</h2>
+        <h2>Example availability this week</h2>
         <InstructorBookingPanel
           instructor={instructor}
           confirmLabel={
-            isFirstTimePick && hasAddress ? "Choose instructor" : "Confirm"
+            isFirstTimePick && hasAddress ? "Choose sample instructor" : "Review time"
           }
           onConfirm={
             isFirstTimePick && hasAddress ? chooseInstructor : undefined

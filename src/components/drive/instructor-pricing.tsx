@@ -26,7 +26,7 @@ export function InstructorPricing({
     <section className="drive-profile-pricing" aria-label="Lesson pricing">
       <div className="drive-profile-pricing__header">
         <h2>Prices & packages</h2>
-        <p>From {formatDrivePrice(hourlyRate)}/hr · book directly with this instructor</p>
+        <p>Sample pricing from {formatDrivePrice(hourlyRate)}/hr · preview only</p>
       </div>
       <div className="drive-profile-pricing__grid">
         {packages.map((pack) => (

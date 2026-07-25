@@ -19,8 +19,13 @@ export function distanceKm(a: GeoPoint, b: GeoPoint): number {
   return earthRadiusKm * 2 * Math.atan2(Math.sqrt(h), Math.sqrt(1 - h));
 }
 
-export function formatDistanceKm(km: number): string {
-  if (km < 1) return `${Math.round(km * 10) / 10} km`;
-  if (km < 10) return `${km.toFixed(1)} km`;
-  return `${Math.round(km)} km`;
+export function kilometersToMiles(km: number): number {
+  return km * 0.621371;
+}
+
+/** California-facing display formatter; calculations remain in kilometers. */
+export function formatDistanceMiles(km: number): string {
+  const miles = kilometersToMiles(km);
+  if (miles < 10) return `${miles.toFixed(1)} mi`;
+  return `${Math.round(miles)} mi`;
 }

@@ -57,15 +57,15 @@ export async function getLicenseJourney(userId: string) {
       },
       {
         number: 2,
-        title: "Get Completion Certificate",
+        title: "Review Certificate Preview",
         description:
-          "Automatically unlocked after completing 30 hours of study. Free certificate from our platform.",
+          "The current preview unlocks after 30 tracked study hours. Official issuance must also verify all configured completion requirements.",
         status: certificateUnlocked ? "complete" : "locked",
         detail: certificateUnlocked
-          ? "Certificate ready!"
+          ? "Certificate preview ready"
           : `${combined.studyProgress.hoursRemaining} hours remaining`,
         action: certificateUnlocked
-          ? { label: "View Certificate", href: "/journey/certificate" }
+          ? { label: "View Certificate Preview", href: "/journey/certificate" }
           : { label: "Track Progress", href: "/progress" },
       },
       {

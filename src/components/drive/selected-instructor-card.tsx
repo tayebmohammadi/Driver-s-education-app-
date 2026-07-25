@@ -4,7 +4,7 @@ import Link from "next/link";
 import { InstructorPhoto } from "@/components/drive/instructor-photo";
 import { InstructorPricing } from "@/components/drive/instructor-pricing";
 import type { DriveInstructor } from "@/lib/drive/config";
-import { formatDistanceKm } from "@/lib/drive/geo-utils";
+import { formatDistanceMiles } from "@/lib/drive/geo-utils";
 
 type SelectedInstructorCardProps = {
   instructor: DriveInstructor;
@@ -24,7 +24,7 @@ export function SelectedInstructorCard({
   return (
     <section className="drive-my-instructor" aria-label="Your instructor">
       <div className="drive-my-instructor__header">
-        <p className="drive-my-instructor__label">Your instructor</p>
+        <p className="drive-my-instructor__label">Selected sample instructor</p>
         <button
           type="button"
           className="drive-my-instructor__change"
@@ -38,6 +38,7 @@ export function SelectedInstructorCard({
         <InstructorPhoto instructor={instructor} />
         <div className="drive-my-instructor__body">
           <h2>{instructor.name}</h2>
+          <p className="drive-section-label">Profile preview</p>
           <p className="drive-instructor-card__school">{instructor.drivingSchoolName}</p>
           <InstructorPricing
             packages={instructor.packages}
@@ -45,17 +46,17 @@ export function SelectedInstructorCard({
             compact
           />
           <p className="drive-my-instructor__rating">
-            ★★★★★ {instructor.rating}{" "}
-            <span>({instructor.reviewCount})</span>
+            Sample rating ★ {instructor.rating}{" "}
+            <span>({instructor.reviewCount} sample reviews)</span>
           </p>
           <p className="drive-my-instructor__vehicle">
             🚗 {instructor.vehicle} · {instructor.transmission}
             {distanceKm !== undefined ? (
-              <span> · {formatDistanceKm(distanceKm)}</span>
+              <span> · {formatDistanceMiles(distanceKm)}</span>
             ) : null}
           </p>
           <span className="drive-instructor-card__availability">
-            ● {instructor.availability}
+            ● Example availability: {instructor.availability}
           </span>
         </div>
         <span className="drive-instructor-card__chevron">›</span>

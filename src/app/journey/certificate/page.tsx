@@ -11,7 +11,7 @@ interface CertData {
     hoursStudied: number;
     requiredHours: number;
   };
-  issuedDate: string;
+  previewDate: string;
 }
 
 export default function CertificatePage() {
@@ -39,7 +39,7 @@ export default function CertificatePage() {
             hoursStudied: 0,
             requiredHours: 30,
           },
-          issuedDate: new Date().toLocaleDateString("en-US", {
+          previewDate: new Date().toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
             day: "numeric",
@@ -61,10 +61,10 @@ export default function CertificatePage() {
     return (
       <HubLayout title="Certificate" backHref="/journey">
         <div className="cert-locked">
-          <h2>Certificate Not Yet Available</h2>
+          <h2>Certificate Preview Not Yet Available</h2>
           <p>
-            Complete {cert.studyProgress.requiredHours} hours of study to unlock
-            your free completion certificate.
+            The current preview becomes available after{" "}
+            {cert.studyProgress.requiredHours} tracked study hours.
           </p>
           <p>
             Current progress:{" "}
@@ -86,41 +86,46 @@ export default function CertificatePage() {
   }
 
   return (
-    <HubLayout title="Completion Certificate" backHref="/journey">
+    <HubLayout title="Certificate Preview" backHref="/journey">
       <div className="certificate" id="certificate">
         <div className="certificate__border">
-          <p className="certificate__platform">Driver Education Platform</p>
-          <h1 className="certificate__title">Certificate of Completion</h1>
+          <p className="certificate__platform">Certificate preview</p>
+          <h1 className="certificate__title">Driver Education Completion Preview</h1>
           <p className="certificate__subtitle">
             California Driver Education — 30-Hour Study Requirement
           </p>
 
-          <p className="certificate__awarded">This certifies that</p>
+          <p className="certificate__awarded">Prepared as a preview for</p>
           <p className="certificate__name">
             {cert.user.firstName} {cert.user.lastName}
           </p>
           <p className="certificate__body">
-            has successfully completed{" "}
+            has recorded{" "}
             <strong>{cert.studyProgress.hoursStudied} hours</strong> of
-            California driver education study, meeting the 30-hour requirement
-            for driver education certification.
+            study activity in the platform. Tracked time alone does not verify
+            completion of every configured course requirement.
           </p>
 
-          <p className="certificate__date">Issued: {cert.issuedDate}</p>
+          <p className="certificate__date">Previewed: {cert.previewDate}</p>
           <p className="certificate__footer">
-            Free certificate issued by Driver Education Platform
+            Preview only — not an officially issued or DMV-verified certificate
           </p>
         </div>
       </div>
 
       <div className="certificate__actions">
         <button type="button" className="btn btn-primary" onClick={handlePrint}>
-          Print Certificate
+          Print preview
         </button>
         <Link href="/journey" className="btn btn-secondary">
           Back to Journey
         </Link>
       </div>
+      <p className="certificate__preview-note">
+        Official issuance must verify all configured course-completion
+        requirements and applicable provider requirements. This preview has no
+        certificate identifier, signature, or verification record.
+      </p>
     </HubLayout>
   );
 }

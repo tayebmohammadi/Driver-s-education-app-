@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import L from "leaflet";
-import { formatDistanceKm } from "@/lib/drive/geo-utils";
+import { formatDistanceMiles } from "@/lib/drive/geo-utils";
 import type { SacramentoInstructorPin } from "@/lib/drive/sacramento-map";
 import "leaflet/dist/leaflet.css";
 
@@ -203,7 +203,7 @@ export function InteractiveInstructorMap({
 
       const distLine =
         pin.distanceKm !== undefined
-          ? `<span class="drive-map-popup__dist">${formatDistanceKm(pin.distanceKm)} away</span>`
+          ? `<span class="drive-map-popup__dist">${formatDistanceMiles(pin.distanceKm)} away</span>`
           : "";
 
       const photoLine = pin.photoUrl
@@ -212,9 +212,9 @@ export function InteractiveInstructorMap({
 
       marker.bindPopup(
         `<div class="drive-map-popup">
-          <div class="drive-map-popup__head">${photoLine}<div><strong>${escapeHtml(pin.name)}</strong><p class="drive-map-popup__school">${escapeHtml(pin.drivingSchoolName)}</p><p>${escapeHtml(pin.area)}</p></div></div>
-          <div class="drive-map-popup__meta"><span>★ ${pin.rating.toFixed(1)}</span><span>${pin.transmission}</span>${pin.hourlyRate ? `<span>$${pin.hourlyRate}/hr</span>` : ""}${distLine}</div>
-          <a class="drive-map-popup__btn" href="${profileHref}">View profile</a>
+          <div class="drive-map-popup__head">${photoLine}<div><strong>${escapeHtml(pin.name)}</strong><p>Sample instructor</p><p class="drive-map-popup__school">${escapeHtml(pin.drivingSchoolName)}</p><p>${escapeHtml(pin.area)}</p></div></div>
+          <div class="drive-map-popup__meta"><span>Sample rating ★ ${pin.rating.toFixed(1)}</span><span>${pin.transmission}</span>${pin.hourlyRate ? `<span>Sample $${pin.hourlyRate}/hr</span>` : ""}${distLine}</div>
+          <a class="drive-map-popup__btn" href="${profileHref}">View preview</a>
         </div>`,
         { className: "drive-leaflet-popup", maxWidth: 260 }
       );

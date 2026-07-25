@@ -150,7 +150,7 @@ export const DRIVE_CHECKLIST: ChecklistCategory[] = [
     needsDevelopment: 0,
     skills: [
       { id: "01", label: "Maintains lane position", status: "pending" },
-      { id: "02", label: "Keeps safe distance from kerb", status: "pending" },
+      { id: "02", label: "Keeps a safe distance from the curb", status: "pending" },
       { id: "03", label: "Positions for bends and hills", status: "pending" },
       { id: "04", label: "Avoids straddling lanes", status: "pending" },
       { id: "05", label: "Adjusts position for hazards", status: "pending" },
@@ -204,16 +204,16 @@ export const DRIVE_CHECKLIST: ChecklistCategory[] = [
   },
   {
     code: "DCM",
-    title: "Dual Carriageways & Motorways",
+    title: "Freeways & Multi-Lane Roads",
     completed: 0,
     total: 4,
     competent: 0,
     needsDevelopment: 0,
     skills: [
-      { id: "01", label: "Merges safely onto dual carriageway", status: "pending" },
+      { id: "01", label: "Merges safely onto the freeway", status: "pending" },
       { id: "02", label: "Maintains safe following distance", status: "pending" },
       { id: "03", label: "Changes lanes safely", status: "pending" },
-      { id: "04", label: "Exits dual carriageway correctly", status: "pending" },
+      { id: "04", label: "Exits the freeway correctly", status: "pending" },
     ],
   },
 ];
@@ -232,123 +232,123 @@ export const DRIVE_HOME_RESOURCES = [
 ];
 
 export const DRIVE_ABOUT_STATS = [
-  { value: "#1", label: "Online School" },
-  { value: "1,800+", label: "Instructors" },
-  { value: "4.7/5", label: "Rating" },
-  { value: "100+", label: "Licensed Schools" },
+  { value: "Preview", label: "Marketplace" },
+  { value: "Sample", label: "Instructor Profiles" },
+  { value: "Example", label: "Availability" },
+  { value: "Sample", label: "Lesson Packages" },
 ];
 
 export const DRIVE_WHY_CHOOSE = [
   {
     icon: "👥",
-    title: "Large Instructor Pool",
+    title: "Compare Instructor Profiles",
     points: [
-      "A large pool of driving instructors from licensed schools near you.",
-      "Compare prices, lesson packages, and availability in one place.",
+      "Explore sample instructor and driving-school profiles.",
+      "Preview how prices, lesson packages, and availability can be compared.",
     ],
   },
   {
     icon: "🎯",
     title: "Pick the Right Instructor",
     points: [
-      "Choose whoever fits you best — language, gender, ratings, and teaching style.",
+      "Compare profile details such as language, vehicle, sample rating, and teaching style.",
       "Filter by car type, pickup location, and more.",
     ],
   },
   {
     icon: "📋",
-    title: "Feedback & Skill Checklist",
+    title: "Training Progress Preview",
     points: [
-      "Read instructor feedback after every lesson.",
-      "Track your progress with a step-by-step skills checklist.",
+      "Preview how lesson feedback could be organized.",
+      "Explore an example step-by-step skills checklist.",
     ],
   },
   {
     icon: "✅",
-    title: "See Real Availability",
+    title: "Explore Example Availability",
     points: [
-      "See which schools and instructors have open lesson slots near you.",
-      "No more calling around only to hear \"we're booked for weeks.\"",
+      "Compare example time slots across sample instructor profiles.",
+      "Actual availability will need confirmation when live partners are connected.",
     ],
   },
   {
     icon: "📅",
-    title: "Flexible Scheduling",
+    title: "Scheduling Preview",
     points: [
-      "Schedule anytime, 24/7, right from your phone.",
-      "See available time slots and book the one that works for you.",
+      "Explore how selecting a date and time can work from your phone.",
+      "Choosing an example slot does not create a confirmed booking.",
     ],
   },
   {
     icon: "🛡️",
-    title: "Licensed & All in One App",
+    title: "One Connected Experience",
     points: [
-      "Every instructor comes from a licensed driving school.",
-      "Track bookings, lesson history, and remaining hours in one account.",
+      "Review school, instructor, vehicle, package, and schedule details together.",
+      "Partner verification and booking history are planned, not yet active.",
     ],
   },
 ];
 
 export const DRIVE_HOW_IT_WORKS_SUBTITLE =
-  "We connect students with licensed driving schools. Browse schools near you, compare options, and book your next lesson in minutes.";
+  "Preview how students can compare driving-school and instructor options in one place.";
 
 export const DRIVE_HOW_IT_WORKS_STUDENTS_SUBTITLE =
-  "Search licensed schools in your area, compare lesson packages and instructors, then book your time slot directly in the app.";
+  "Explore sample profiles, lesson packages, and example schedules. Live partner booking is not yet available.";
 
 export const DRIVE_HOW_IT_WORKS_SCHOOLS_SUBTITLE =
-  "Create your school profile, list your packages and availability, and start receiving confirmed student bookings through the platform.";
+  "Preview the planned partner experience for profiles, packages, and scheduling.";
 
 export const DRIVE_HOW_IT_WORKS_TRUST_NOTE =
-  "We do not provide driving lessons ourselves. Every lesson is delivered by a licensed driving school — our app simply makes it easier to search, compare, and book.";
+  "Marketplace profiles and schedules shown here are sample information. Future live listings will require partner verification.";
 
 export const DRIVE_HOW_IT_WORKS_STUDENTS = [
   {
     step: "1",
     title: "Search Instructors Near You",
-    body: "Enter your address to see instructors near your area, along with their packages, ratings, and availability.",
+    body: "Enter an address to preview nearby sample profiles, packages, ratings, and example availability.",
   },
   {
     step: "2",
     title: "Compare Packages & Instructors",
-    body: "Compare packages side by side — hourly rates, lesson bundles, exam prep, and exam-day options where an instructor goes with you in their car. Browse instructors by rating, languages spoken, experience, and pricing to find the right fit.",
+    body: "Compare sample packages side by side, including lesson bundles, road-test preparation, languages, vehicles, and example pricing.",
   },
   {
     step: "3",
-    title: "Book Your Lesson",
-    body: "Choose your package, pick an available time, and complete your booking in the app. Your spot is reserved as soon as you book.",
+    title: "Preview a Lesson Time",
+    body: "Choose a sample package and example time to explore the scheduling interface. This preview does not reserve a lesson.",
   },
   {
     step: "4",
-    title: "Take Your Lesson",
-    body: "Show up at your scheduled time. The driving school handles your training with a licensed instructor and manages everything from their side.",
+    title: "Confirm a Future Live Listing",
+    body: "When live partners are available, final school details, instructor status, pricing, and availability will need confirmation before a lesson.",
   },
 ];
 
 export const DRIVE_HOW_IT_WORKS_SCHOOLS = [
   {
     step: "1",
-    title: "Create Your School Profile",
-    body: "Set up your business profile with your school name, license number, service area, contact details, and policies so students know what to expect.",
+    title: "Preview a School Profile",
+    body: "The planned partner experience can present a school name, service area, contact details, offerings, and policies.",
   },
   {
     step: "2",
     title: "List Packages & Availability",
-    body: "Add your lesson offerings — single lessons, teen packages, road test prep, adult courses — and open the time slots students can book online.",
+    body: "The planned tools can present single lessons, teen packages, road-test preparation, adult lessons, and schedule information.",
   },
   {
     step: "3",
-    title: "Receive Confirmed Bookings",
-    body: "When a student books through the app, you get their details right away: chosen package, pickup location, scheduled time, and contact information.",
+    title: "Review Booking Concepts",
+    body: "Confirmed booking delivery is planned but is not implemented in the current marketplace preview.",
   },
   {
     step: "4",
     title: "Assign an Instructor",
-    body: "Match each booking to an available instructor on your team and share the lesson details. Your school runs the lesson from there.",
+    body: "Instructor assignment and school-side lesson management are planned but are not active features.",
   },
   {
     step: "5",
-    title: "Pay Only When We Bring a Student",
-    body: "There are no upfront listing fees. The platform earns a commission only on bookings that come through the app.",
+    title: "Partnership Terms",
+    body: "Partner enrollment, pricing, and commercial terms have not yet been finalized.",
   },
 ];
 
@@ -356,31 +356,31 @@ export const DRIVE_FAQ = [
   {
     question: "How is an online driving school different from a traditional one?",
     answer:
-      "You study theory at your own pace online, then book practical lessons with a certified instructor near you. No physical classroom — everything is managed via the app, making it faster and much cheaper.",
+      "You can study theory online and preview how nearby lesson options could be compared. Live instructor verification and booking are not yet available.",
   },
   {
-    question: "Are the instructors really certified?",
+    question: "Are these live, verified instructors?",
     answer:
-      "Yes, 100%. Every instructor holds a state-issued diploma (DVSA approved) and is continuously evaluated. You can see each instructor's rating, pass rate, and reviews before booking.",
+      "No. The current profiles, ratings, reviews, schedules, and school details are sample marketplace information. Future live profiles will require verification.",
   },
   {
     question: "How many lessons will I need?",
     answer:
-      "It varies per person, but the average is around 20–25 hours. Your instructor evaluates your level in the first session and builds a personalized roadmap for you.",
+      "Lesson needs vary by experience and goals. A future verified instructor can assess your skills and discuss an appropriate plan.",
   },
   {
     question: "Can I choose my own instructor?",
     answer:
-      "Absolutely. Browse available instructors near you, filter by language or availability, and pick whoever feels right. You can switch instructors at any time.",
+      "The preview lets you compare sample profiles by language, vehicle, pricing, and example availability.",
   },
   {
     question: "What if I'm not happy after my first lesson?",
     answer:
-      "You can switch to a different instructor at any time. Browse ratings, profiles, language, teaching style, and car type to find a better match without starting your search over.",
+      "You can return to the sample results and compare a different profile. Live switching policies will depend on future partner and booking terms.",
   },
   {
     question: "How does the exam booking work?",
     answer:
-      "Once your instructor confirms you're ready, we handle the practical exam registration. An exam slot is guaranteed as part of your pack, and your instructor accompanies you on the day.",
+      "Road-test registration and guaranteed exam-day support are not currently provided. Confirm test scheduling and vehicle requirements through official California DMV guidance and any future verified lesson provider.",
   },
 ];

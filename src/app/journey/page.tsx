@@ -123,9 +123,9 @@ export default function JourneyPage() {
 
       {journey.certificateEligible ? (
         <div className="journey-cert-banner">
-          <p>🎓 You&apos;ve completed 30 hours of study!</p>
+          <p>🎓 Your 30-hour certificate preview is available.</p>
           <Link href="/journey/certificate" className="btn btn-primary">
-            View Your Certificate
+            View Certificate Preview
           </Link>
         </div>
       ) : null}

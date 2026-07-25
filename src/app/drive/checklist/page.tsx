@@ -40,7 +40,7 @@ export default function DriveChecklistPage() {
       <div className="drive-checklist-title-row">
         <div>
           <h1 className="drive-page-title drive-page-title--checklist">Skills Assessment</h1>
-          <p className="hub-section-desc">DVSA Standard Framework</p>
+          <p className="hub-section-desc">Sample California driving-skills framework</p>
         </div>
         <div className="drive-checklist-lesson-badge">
           <strong>L4</strong>
@@ -154,9 +154,9 @@ export default function DriveChecklistPage() {
 
       <div className="drive-checklist-save">
         <button type="button" className="btn btn-primary btn-lg">
-          Save Assessment Report
+          Preview Assessment Report
         </button>
-        <p>Report will be shared with the student and logged to their profile</p>
+        <p>Preview only. This assessment is not saved or shared.</p>
       </div>
     </DriveLayout>
   );

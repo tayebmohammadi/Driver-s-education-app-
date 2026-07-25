@@ -210,7 +210,7 @@ function DriveHomeContent() {
         </button>
         <InstructorBookingPanel
           instructor={selectedInstructor}
-          confirmLabel="Book lesson"
+          confirmLabel="Review selected time"
         />
       </DriveLayout>
     );
@@ -272,7 +272,7 @@ function DriveHomeContent() {
             className="drive-cta-row__btn drive-cta-row__btn--instructors"
             onClick={openBooking}
           >
-            Book a lesson
+            Preview lesson times
           </button>
         </div>
       ) : (
@@ -322,15 +322,15 @@ function DriveHomeContent() {
         <div className="drive-reviews-bar">
           <span
             className="drive-reviews-bar__rating"
-            aria-label="4.7 out of 5 stars"
+            aria-label="Sample marketplace rating"
           >
             <span className="drive-reviews-bar__stars" aria-hidden>
               ★★★★★
             </span>
-            <strong>4.7/5</strong>
+            <strong>Sample ratings</strong>
           </span>
           <Link href="/drive/about#reviews" className="drive-reviews-bar__link">
-            See reviews
+            About this preview
           </Link>
         </div>
 
@@ -338,10 +338,10 @@ function DriveHomeContent() {
           <span className="drive-callback__icon" aria-hidden>
             <DriveChatIcon />
           </span>
-          <p>A question? We call you back free 📞</p>
-          <button type="button" className="drive-callback__link">
-            Ask a question
-          </button>
+          <p>Learn how the marketplace preview works.</p>
+          <Link href="/drive/about" className="drive-callback__link">
+            View preview details
+          </Link>
         </div>
       </div>
     </DriveLayout>

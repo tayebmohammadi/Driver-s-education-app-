@@ -18,7 +18,7 @@ cp .env.example .env
 docker compose up -d
 npm install
 npx prisma migrate deploy
-npm run db:seed
+ALLOW_DESTRUCTIVE_SEED=true npm run db:seed
 npm run dev
 ```
 
@@ -32,7 +32,7 @@ Ensure PostgreSQL is running and `DATABASE_URL` in `.env` is correct, then:
 cp .env.example .env
 npm install
 npm run db:migrate
-npm run db:seed
+ALLOW_DESTRUCTIVE_SEED=true npm run db:seed
 npm run dev
 ```
 
@@ -51,7 +51,9 @@ npm run dev
 | `JWT_SECRET` | Yes | Min. 32 characters |
 | `APP_URL` | Yes | e.g. `http://localhost:3000` |
 | `SMTP_*` | No | Email; links log to console if unset |
-| `ENABLE_DEMO_AUTO_LOGIN` | No | Set `true` to skip login in dev |
+| `ENABLE_DEMO_AUTO_LOGIN` | No | Set `true` to allow auto-login outside production |
+| `DEMO_STUDENT_EMAIL` | Demo only | Explicit demo account used by local auto-login |
+| `ALLOW_DESTRUCTIVE_SEED` | Seed only | Must be `true` to run the destructive seed outside production |
 
 ## Demo account (after seed)
 
@@ -101,7 +103,7 @@ Admin routes: `/admin`, `/admin/courses`, `/admin/questions`, `/admin/users`
 
 ## Seed data
 
-`npm run db:seed` loads:
+`ALLOW_DESTRUCTIVE_SEED=true npm run db:seed` loads:
 
 - California Driver Education course (~46 lessons, quiz questions)
 - 30 series with final exams
