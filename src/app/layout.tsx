@@ -11,8 +11,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "DMV Study",
-  description: "California DMV permit study — pass your test with confidence.",
+  title: {
+    default: "DriveEasy – Free Driver's Ed & Lesson Booking",
+    template: "%s | DriveEasy",
+  },
+  description:
+    "All-in-one driving school app for students, parents, and licensed schools. DMV-style prep, instructor search, online booking, and progress tracking in one place.",
 };
 
 export default function RootLayout({
