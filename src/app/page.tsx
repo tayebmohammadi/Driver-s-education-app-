@@ -1,9 +1,25 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { getSessionFromCookies } from "@/lib/auth/session";
-import { DRIVE_INSTRUCTORS } from "@/lib/drive/instructors-data";
-import { formatDrivePrice } from "@/lib/drive/pricing";
-import { formatDistanceMiles } from "@/lib/drive/geo-utils";
+import { PublicAppShowcase } from "@/components/marketing/public-app-showcase";
+import {
+  appIntro,
+  brokenProcessSteps,
+  certificateHighlight,
+  faqs,
+  heroJourneySteps,
+  problemItems,
+  schoolBenefits,
+  surveyInsights,
+  tractionMetrics,
+} from "@/lib/marketing/landing-content";
+
+export const metadata: Metadata = {
+  title: "DriveEasy – Get Your License in One Simple App",
+  description:
+    "California-focused driver education, permit preparation, license-journey guidance, and a preview of driving-lesson discovery in one place.",
+};
 
 function ArrowIcon() {
   return (
@@ -21,14 +37,6 @@ function CheckIcon() {
   );
 }
 
-function RoadIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M8 22 10 2M16 22 14 2M12 5v3M12 12v3M12 19v3" />
-    </svg>
-  );
-}
-
 function BookIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -37,26 +45,10 @@ function BookIcon() {
   );
 }
 
-function TestIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M9 5h9M9 10h9M9 15h5M5 5h.01M5 10h.01M5 15h.01M5 20h14" />
-    </svg>
-  );
-}
-
 function CalendarIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d="M5 3v3M19 3v3M3 9h18M5 5h14a2 2 0 0 1 2 2v13H3V7a2 2 0 0 1 2-2ZM8 13h3M14 13h3M8 17h3" />
-    </svg>
-  );
-}
-
-function ChartIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" />
     </svg>
   );
 }
@@ -77,117 +69,39 @@ function UsersIcon() {
   );
 }
 
-function initials(name: string) {
-  return name
-    .split(" ")
-    .map((part) => part[0])
-    .join("")
-    .slice(0, 2);
+function ShieldIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 3 4 7v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V7l-8-4Z" />
+    </svg>
+  );
 }
 
-const paths = [
+const howItWorksSteps = [
   {
-    label: "Teen first-time driver",
-    eyebrow: "Full license journey",
-    description:
-      "Move from Driver’s Ed and your completion certificate through the permit, professional training, supervised practice, and road test.",
-    items: ["Driver’s Ed course", "Permit preparation", "Training and practice roadmap"],
-    href: "/get-started?path=teen",
-  },
-  {
-    label: "Adult first-time driver",
-    eyebrow: "A flexible route",
-    description:
-      "Prepare for the permit test, choose professional lessons when they help, practice your skills, and get ready for the road test.",
-    items: ["Permit study tools", "Optional driving lessons", "Road-test readiness"],
-    href: "/get-started?path=adult",
-  },
-  {
-    label: "Driving lessons only",
-    eyebrow: "Start behind the wheel",
-    description:
-      "Already have a permit or license? Find lessons for skill building, a refresher, local-road confidence, or road-test preparation.",
-    items: ["Browse sample lesson options", "Compare example availability", "Preview an instructor"],
-    href: "/get-started?path=lessons",
-  },
-];
-
-const capabilities = [
-  {
-    title: "Structured online Driver’s Ed",
-    description: "Focused California lessons, quizzes, and a clear series-by-series course path.",
+    title: "Set up your path",
+    description: "Choose a teen, adult, or lessons-only starting point.",
     icon: BookIcon,
   },
   {
-    title: "Permit-test preparation",
-    description: "Topic study, question practice, full exams, explanations, and weak-area review.",
-    icon: TestIcon,
+    title: "Learn and prepare",
+    description: "Use the course and permit-preparation tools that fit your path.",
+    icon: ShieldIcon,
   },
   {
-    title: "Personal license roadmap",
-    description: "See the next milestone from education and permit preparation through the road test.",
-    icon: RoadIcon,
-  },
-  {
-    title: "Marketplace preview",
-    description: "Compare sample instructor profiles, service areas, vehicles, pricing, and example availability.",
+    title: "Explore lessons",
+    description: "Preview instructor profiles, pricing, and example availability.",
     icon: UsersIcon,
-    status: "Preview",
   },
   {
-    title: "Scheduling interface preview",
-    description: "Explore how a lesson package, pickup location, date, and time could be selected. No booking is created.",
+    title: "Track your journey",
+    description: "Keep your learning and licensing milestones in view.",
     icon: CalendarIcon,
-    status: "Preview",
   },
-  {
-    title: "Professional + supervised-hour tracking",
-    description: "Planned tools will connect professional training and supervised practice to the license journey.",
-    icon: ChartIcon,
-    status: "Planned",
-  },
-  {
-    title: "Road-test preparation",
-    description: "Use practice content and behind-the-wheel lessons to build test-day confidence.",
-    icon: CarIcon,
-  },
-];
+] as const;
 
-const journeySteps = [
-  "Complete Driver’s Ed",
-  "Get Your Permit",
-  "Learn to Drive",
-  "Complete Practice",
-  "Pass Your Road Test",
-];
-
-const faqs = [
-  {
-    question: "Who is this platform for?",
-    answer:
-      "It is designed for California teens beginning the full licensing journey, adults learning for the first time, current permit holders, licensed drivers who want a refresher, and students preparing for a road test.",
-  },
-  {
-    question: "Can adults book driving lessons?",
-    answer:
-      "Yes. Adults can explore the driving-lesson experience without following the teen Driver’s Ed path. Current profiles and availability are marketplace previews rather than live bookings.",
-  },
-  {
-    question: "When can a teen begin behind-the-wheel training?",
-    answer:
-      "A teen should begin professional behind-the-wheel training only after reaching the applicable permit and education milestones. The platform’s journey view is intended to keep those steps clear; always confirm current requirements with the California DMV.",
-  },
-  {
-    question: "Can I book lessons if I took Driver’s Ed somewhere else?",
-    answer:
-      "Yes. Permit holders and licensed drivers can explore lesson options without completing this platform’s online course. Live partner booking is not yet available.",
-  },
-  {
-    question: "How do driving-school partnerships work?",
-    answer:
-      "A future partner experience could present school and lesson information. Partner enrollment, verification, and school-management tools are not currently available.",
-  },
-];
+const GET_STARTED = "/get-started";
+const GET_STARTED_DRIVE = "/get-started?path=lessons";
 
 export default async function RootPage() {
   const session = await getSessionFromCookies();
@@ -196,27 +110,40 @@ export default async function RootPage() {
     redirect(session.role === "ADMIN" ? "/admin" : "/home");
   }
 
-  const instructorPreview = DRIVE_INSTRUCTORS.slice(0, 3);
-
   return (
     <main className="public-landing">
       <header className="public-header">
         <div className="public-header__inner">
-          <Link href="/" className="public-logo" aria-label="DMV Study home">
-            <span className="public-logo__mark" aria-hidden="true"><span /></span>
-            <span>DMV Study</span>
+          <Link href="/" className="public-logo" aria-label="DriveEasy home">
+            <span className="public-logo__mark" aria-hidden="true">
+              <span />
+            </span>
+            <span>DriveEasy</span>
           </Link>
           <nav className="public-header__nav" aria-label="Public navigation">
-            <a href="#how-it-works">How It Works</a>
-            <a href="#drivers-ed">Driver&apos;s Ed</a>
-            <a href="#driving-lessons">Driving Lessons</a>
-            <a href="#for-parents">For Parents</a>
-            <a href="#for-schools">For Driving Schools</a>
+            <a href="#problem">Problem</a>
+            <a href="#app">App</a>
+            <a href="#how-it-works">How it works</a>
+            <a href="#schools">Schools</a>
+            <a href="#faq">FAQ</a>
           </nav>
+          <details className="public-header__menu">
+            <summary aria-label="Open menu">Menu</summary>
+            <nav aria-label="Mobile navigation">
+              <a href="#problem">Problem</a>
+              <a href="#app">App</a>
+              <a href="#how-it-works">How it works</a>
+              <a href="#schools">Schools</a>
+              <a href="#faq">FAQ</a>
+              <Link href={GET_STARTED}>Start your journey</Link>
+            </nav>
+          </details>
           <div className="public-header__actions">
-            <Link href="/login" className="public-signin">Sign in</Link>
-            <Link href="/get-started" className="public-button public-button--small">
-              Start Your License Journey
+            <Link href="/login" className="public-signin">
+              Sign in
+            </Link>
+            <Link href={GET_STARTED} className="public-button public-button--small">
+              Start your journey
             </Link>
           </div>
         </div>
@@ -224,256 +151,215 @@ export default async function RootPage() {
 
       <section className="public-hero">
         <div className="public-hero__copy">
-          <p className="public-eyebrow">California driver education + lessons</p>
-          <h1>From driver&apos;s ed to your California license—all in one place.</h1>
+          <p className="public-eyebrow">All-in-one driving school app</p>
+          <h1>Get your driver&apos;s license in one simple app.</h1>
           <p className="public-hero__lead">
-            Complete driver&apos;s education, prepare for your permit, explore
-            behind-the-wheel lesson options, and
-            track every step toward your license.
+            California-focused learning and journey guidance for teens and adults,
+            with a preview of driving-lesson discovery.
           </p>
           <div className="public-hero__actions">
-            <Link href="/get-started" className="public-button">
-              Start Your License Journey <ArrowIcon />
+            <Link href={GET_STARTED} className="public-button">
+              Start your journey <ArrowIcon />
             </Link>
-            <Link href="/drive" className="public-button public-button--secondary">
-              Find Driving Lessons
-            </Link>
+            <a href="#app" className="public-button public-button--secondary">
+              See the app
+            </a>
           </div>
-          <ul className="public-hero__checks">
-            <li><CheckIcon />California-focused journey</li>
-            <li><CheckIcon />Driver&apos;s Ed and lesson tools</li>
-            <li><CheckIcon />Paths for teens and adults</li>
-          </ul>
         </div>
-
-        <div className="public-hero__preview" aria-label="License journey product preview">
+        <div className="public-hero__preview" aria-hidden="true">
           <div className="public-preview__top">
             <div>
-              <span>YOUR LICENSE JOURNEY</span>
-              <strong>A clear next step, every step</strong>
+              <span>License journey</span>
+              <strong>One app, every step</strong>
             </div>
             <span className="public-preview__state">CA</span>
           </div>
-          <div className="public-preview__route">
-            {journeySteps.map((step, index) => (
-              <div className={index === 0 ? "is-current" : ""} key={step}>
-                <span>{index === 0 ? "✓" : index + 1}</span>
+          <div className="public-preview__route public-preview__route--six">
+            {heroJourneySteps.map((step, index) => (
+              <div key={step} className={index === 0 ? "is-current" : undefined}>
+                <span>{index + 1}</span>
                 <p>{step}</p>
               </div>
             ))}
           </div>
           <div className="public-preview__next">
-            <span className="public-preview__next-icon"><BookIcon /></span>
-            <div><small>NEXT UP</small><strong>Continue Driver&apos;s Ed</strong></div>
+            <span className="public-preview__next-icon">
+              <BookIcon />
+            </span>
+            <div>
+              <small>Next up</small>
+              <strong>Continue Studying</strong>
+            </div>
             <ArrowIcon />
-          </div>
-          <div className="public-preview__lesson">
-            <span><CarIcon /></span>
-            <p><strong>Need driving lessons?</strong> Compare local options and available times.</p>
           </div>
         </div>
       </section>
 
-      <section className="public-paths" aria-labelledby="paths-title">
-        <div className="public-section-heading">
-          <p className="public-eyebrow">Choose your path</p>
-          <h2 id="paths-title">One platform, built around where you&apos;re starting.</h2>
-          <p>
-            Choose the goal that fits you. The platform is designed to shape the
-            journey around that choice as personalization is introduced.
-          </p>
+      <section className="public-intro" id="intro" aria-labelledby="intro-title">
+        <div className="public-intro__panel">
+          <div className="public-intro__content">
+            <p className="public-intro__eyebrow">{appIntro.eyebrow}</p>
+            <h2 id="intro-title">{appIntro.headline}</h2>
+            <p className="public-intro__lead">{appIntro.lead}</p>
+          </div>
+          <footer className="public-intro__footer">
+            <p className="public-intro__closing">{appIntro.closing}</p>
+            <ul className="public-intro__audiences" aria-label="Who we serve">
+              {appIntro.audiences.map((audience) => (
+                <li key={audience}>{audience}</li>
+              ))}
+            </ul>
+          </footer>
         </div>
-        <div className="public-path-grid">
-          {paths.map((path, index) => (
-            <article className={index === 0 ? "public-path-card is-featured" : "public-path-card"} key={path.label}>
-              <span className="public-path-card__number">0{index + 1}</span>
-              <p className="public-path-card__eyebrow">{path.eyebrow}</p>
-              <h3>{path.label}</h3>
-              <p>{path.description}</p>
-              <ul>
-                {path.items.map((item) => <li key={item}><CheckIcon />{item}</li>)}
-              </ul>
-              <Link href={path.href}>
-                Explore this path <ArrowIcon />
-              </Link>
+      </section>
+
+      <section className="public-problem" id="problem" aria-labelledby="problem-title">
+        <div className="public-section-heading">
+          <p className="public-eyebrow">The problem</p>
+          <h2 id="problem-title">Six tools. No shared picture.</h2>
+        </div>
+        <div className="public-problem-grid">
+          {problemItems.map((item) => (
+            <article key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
             </article>
           ))}
         </div>
+        <ol className="public-broken-flow__steps" aria-label="Today's disconnected process">
+          {brokenProcessSteps.map((step, index) => (
+            <li key={step}>
+              <span>{index + 1}</span>
+              <p>{step}</p>
+            </li>
+          ))}
+        </ol>
       </section>
 
       <section className="public-how" id="how-it-works" aria-labelledby="how-title">
         <div className="public-how__intro">
           <p className="public-eyebrow">How it works</p>
-          <h2 id="how-title">The teen journey, made easier to follow.</h2>
-          <p>
-            Keep the big picture in view while the platform helps organize the
-            learning, lessons, practice, and preparation inside each stage.
-          </p>
+          <h2 id="how-title">Your path, step by step.</h2>
         </div>
-        <ol className="public-journey">
-          {journeySteps.map((step, index) => (
-            <li key={step}>
-              <span>{index + 1}</span>
-              <strong>{step}</strong>
+        <ol className="public-steps-four">
+          {howItWorksSteps.map((step, index) => (
+            <li key={step.title}>
+              <span className="public-steps-four__num">{index + 1}</span>
+              <span className="public-steps-four__icon">
+                <step.icon />
+              </span>
+              <strong>{step.title}</strong>
+              <p>{step.description}</p>
             </li>
           ))}
         </ol>
-        <p className="public-how__note">
-          Requirements vary by age and circumstance. The in-app journey provides
-          more context, and students should confirm current rules with the California DMV.
+        <div className="public-how__cta">
+          <Link href={GET_STARTED} className="public-button">
+            Start your journey <ArrowIcon />
+          </Link>
+          <Link href={GET_STARTED_DRIVE} className="public-text-link">
+            Explore driving lessons <ArrowIcon />
+          </Link>
+        </div>
+      </section>
+
+      <section className="public-certificate-callout" aria-labelledby="certificate-title">
+        <div className="public-certificate-callout__copy">
+          <p className="public-eyebrow">{certificateHighlight.eyebrow}</p>
+          <h2 id="certificate-title">{certificateHighlight.title}</h2>
+          <p>{certificateHighlight.description}</p>
+        </div>
+        <div className="public-certificate-callout__compare" aria-label="Certificate price comparison">
+          <div className="public-certificate-callout__price public-certificate-callout__price--ours">
+            <span>{certificateHighlight.oursLabel}</span>
+            <strong>{certificateHighlight.ours}</strong>
+          </div>
+          <div className="public-certificate-callout__price public-certificate-callout__price--theirs">
+            <span>{certificateHighlight.theirsLabel}</span>
+            <strong>{certificateHighlight.theirs}</strong>
+          </div>
+        </div>
+      </section>
+
+      <section className="public-app-intro" id="app" aria-labelledby="app-title">
+        <h2 id="app-title" className="public-app-intro__title">
+          See the app
+        </h2>
+        <PublicAppShowcase />
+        <p className="public-app-intro__note">
+          Marketplace profiles, ratings, prices, and availability shown in this
+          preview are sample information.
         </p>
       </section>
 
-      <section className="public-capabilities" id="drivers-ed" aria-labelledby="capabilities-title">
-        <div className="public-section-heading public-section-heading--left">
-          <p className="public-eyebrow">Everything works together</p>
-          <h2 id="capabilities-title">More than an online course.</h2>
-          <p>
-            Study tools, lesson discovery, scheduling, and progress tracking
-            connect around one goal: helping each driver know what comes next.
-          </p>
+      <section className="public-partners" id="schools" aria-labelledby="schools-title">
+        <div className="public-partners__icon" aria-hidden="true">
+          <CarIcon />
         </div>
-        <div className="public-capability-grid">
-          {capabilities.map(({ title, description, icon: Icon, status }) => (
-            <article key={title}>
-              <span><Icon /></span>
-              <h3>
-                {title}
-                {status ? <small>{status}</small> : null}
-              </h3>
-              <p>{description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="public-lessons" id="driving-lessons" aria-labelledby="lessons-title">
-        <div className="public-lessons__heading">
-          <div>
-            <p className="public-eyebrow">Behind-the-wheel lessons</p>
-            <h2 id="lessons-title">Find lesson options that fit your needs.</h2>
-          </div>
-          <div>
-            <p>
-              Compare the details already available in the platform, then choose
-              an instructor and an open time supplied through the lesson experience.
-            </p>
-            <Link href="/drive" className="public-text-link">
-              Find Lessons <ArrowIcon />
-            </Link>
-          </div>
-        </div>
-
-        <div className="public-instructor-grid">
-          {instructorPreview.map((instructor) => (
-            <article className="public-instructor-card" key={instructor.id}>
-              <p className="public-eyebrow">Sample instructor</p>
-              <div className="public-instructor-card__head">
-                <span className="public-instructor-card__avatar" aria-hidden="true">
-                  {initials(instructor.name)}
-                </span>
-                <div>
-                  <h3>{instructor.name}</h3>
-                  <p>{instructor.drivingSchoolName}</p>
-                </div>
-                <span className="public-instructor-card__rating" aria-label={`Sample rating ${instructor.rating} out of 5`}>
-                  ★ {instructor.rating} sample
-                </span>
-              </div>
-              <dl>
-                <div><dt>Lesson price</dt><dd>From {formatDrivePrice(instructor.hourlyRate)}/hr</dd></div>
-                <div><dt>Vehicle</dt><dd>{instructor.vehicle} · {instructor.transmission}</dd></div>
-                <div><dt>Service area</dt><dd>{instructor.area} · {formatDistanceMiles(instructor.distanceKm)}</dd></div>
-                <div><dt>Example availability</dt><dd className="is-available">{instructor.availability}</dd></div>
-              </dl>
-              <Link href={`/drive/instructors/${instructor.id}`}>
-                View Lessons <ArrowIcon />
-              </Link>
-            </article>
-          ))}
-        </div>
-        <p className="public-lessons__disclosure">
-          Marketplace preview uses sample instructor, school, rating, pricing, and
-          availability information. Live listings will require partner verification.
-        </p>
-      </section>
-
-      <section className="public-parents" id="for-parents" aria-labelledby="parents-title">
-        <div className="public-parents__visual" aria-hidden="true">
-          <div className="public-parent-card">
-            <span className="public-parent-card__icon"><UsersIcon /></span>
-            <div><small>FAMILY VIEW</small><strong>Stay connected to the journey</strong></div>
-          </div>
-          <div className="public-parent-progress">
-            <span><i /></span>
-            <div><strong>Supervised practice</strong><small>Daytime and nighttime hours</small></div>
-          </div>
-          <div className="public-parent-progress">
-            <span><i /></span>
-            <div><strong>Upcoming milestones</strong><small>Know what your teen needs next</small></div>
-          </div>
-        </div>
-        <div className="public-parents__copy">
-          <p className="public-eyebrow">For parents and guardians</p>
-          <h2 id="parents-title">Support the journey without losing the big picture.</h2>
-          <p>
-            The parent experience is planned to make it easier to follow progress,
-            help coordinate lessons, and understand the milestones ahead.
-          </p>
-          <ul>
-            <li><CheckIcon />Follow Driver&apos;s Ed and permit-prep progress</li>
-            <li><CheckIcon />Help manage behind-the-wheel lesson bookings</li>
-            <li><CheckIcon />Track supervised and nighttime practice</li>
-            <li><CheckIcon />See upcoming requirements and road-test readiness</li>
-          </ul>
-          <span className="public-coming-soon">Parent tools are planned—not yet a live dashboard.</span>
-        </div>
-      </section>
-
-      <section className="public-trust" aria-labelledby="trust-title">
-        <div>
-          <p className="public-eyebrow">Built for informed decisions</p>
-          <h2 id="trust-title">Clarity at every turn.</h2>
-        </div>
-        <ul>
-          <li><CheckIcon /><span><strong>California-focused journey</strong>Course and roadmap content organized around California learners.</span></li>
-          <li><CheckIcon /><span><strong>Marketplace preview</strong>Compare sample school, instructor, vehicle, service-area, and availability details together.</span></li>
-          <li><CheckIcon /><span><strong>Example lesson pricing</strong>Preview how hourly prices and packages can be compared.</span></li>
-          <li><CheckIcon /><span><strong>Connected learning</strong>Keep recorded study progress and the high-level license roadmap visible in one experience.</span></li>
-        </ul>
-      </section>
-
-      <section className="public-partners" id="for-schools" aria-labelledby="partners-title">
-        <div className="public-partners__icon" aria-hidden="true"><CarIcon /></div>
         <div>
           <p className="public-eyebrow">For driving schools</p>
-          <h2 id="partners-title">Preview a future marketplace presence for your school.</h2>
+          <h2 id="schools-title">More students. Less admin.</h2>
           <p>
-            A future partner program could present school, instructor, lesson,
-            pricing, and availability information. Enrollment is not currently open.
+            Preview how a future partner experience could make school profiles,
+            lesson options, and scheduling easier to understand.
           </p>
+          <ul className="public-partners__list">
+            {schoolBenefits.map((item) => (
+              <li key={item}>
+                <CheckIcon />
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
-        <button
-          type="button"
-          className="public-button public-button--light"
-          aria-disabled="true"
-          title="Partner applications are coming soon"
-        >
-          Partner program
-          <span className="public-button__soon">Planned</span>
-        </button>
+        <a href="#faq" className="public-button public-button--light">
+          Partner with us <ArrowIcon />
+        </a>
       </section>
 
-      <section className="public-faq" aria-labelledby="faq-title">
+      <section className="public-traction" id="traction" aria-labelledby="traction-title">
+        <div className="public-section-heading">
+          <p className="public-eyebrow">One connected product</p>
+          <h2 id="traction-title">Built around the full driving journey.</h2>
+        </div>
+        <div className="public-traction-grid">
+          {tractionMetrics.map((metric) => (
+            <article key={metric.label}>
+              <strong>{metric.value}</strong>
+              <h3>{metric.label}</h3>
+              <p>{metric.detail}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="public-testimonials" aria-labelledby="testimonials-title">
+        <div className="public-section-heading">
+          <p className="public-eyebrow">Designed for real needs</p>
+          <h2 id="testimonials-title">A clearer experience for every audience.</h2>
+        </div>
+        <div className="public-testimonial-grid">
+          {surveyInsights.map((item) => (
+            <article key={item.audience} className="public-testimonial-card public-survey-card">
+              <p className="public-survey-card__audience">{item.audience}</p>
+              <p>{item.quote}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="public-faq" id="faq" aria-labelledby="faq-title">
         <div className="public-faq__heading">
-          <p className="public-eyebrow">Questions, answered</p>
-          <h2 id="faq-title">Frequently asked questions</h2>
-          <p>Start with the path that matches your situation. You do not have to use every part of the platform.</p>
+          <p className="public-eyebrow">FAQ</p>
+          <h2 id="faq-title">Quick answers</h2>
         </div>
         <div className="public-faq__list">
           {faqs.map((faq, index) => (
             <details key={faq.question} open={index === 0}>
-              <summary>{faq.question}<span aria-hidden="true">+</span></summary>
+              <summary>
+                {faq.question}
+                <span aria-hidden="true">+</span>
+              </summary>
               <p>{faq.answer}</p>
             </details>
           ))}
@@ -482,53 +368,73 @@ export default async function RootPage() {
 
       <section className="public-final">
         <div>
-          <p className="public-eyebrow">Wherever you&apos;re starting</p>
-          <h2>Take the next step toward confident driving.</h2>
+          <p className="public-eyebrow">Ready to start?</p>
+          <h2>Ready to start your license journey?</h2>
+          <p className="public-final__sub">
+            Set up the path that fits your age, current stage, and driving goals.
+          </p>
         </div>
-        <div>
-          <Link href="/get-started" className="public-button public-button--light">
-            Start Your License Journey <ArrowIcon />
+        <div className="public-final__actions">
+          <Link href={GET_STARTED} className="public-button public-button--light">
+            Start your journey <ArrowIcon />
           </Link>
-          <Link href="/drive" className="public-final__secondary">Find Driving Lessons</Link>
+          <Link href={GET_STARTED_DRIVE} className="public-button public-button--secondary">
+            Explore driving lessons
+          </Link>
+          <a
+            href="#faq"
+            className="public-final__secondary"
+          >
+            Partner with us
+          </a>
         </div>
       </section>
 
-      <footer className="public-footer" id="legal">
+      <footer className="public-footer">
         <div className="public-footer__top">
           <div className="public-footer__brand">
             <Link href="/" className="public-logo">
-              <span className="public-logo__mark" aria-hidden="true"><span /></span>
-              <span>DMV Study</span>
+              <span className="public-logo__mark" aria-hidden="true">
+                <span />
+              </span>
+              <span>DriveEasy</span>
             </Link>
-            <p>Driver education, lesson discovery, and license-journey tools for California learners.</p>
+            <p>California driver education and license-journey guidance, simplified.</p>
           </div>
           <div>
-            <strong>Learn</strong>
-            <a href="#drivers-ed">Driver&apos;s Ed</a>
-            <a href="#how-it-works">How It Works</a>
-            <Link href="/journey">License Journey</Link>
+            <strong>Product</strong>
+            <a href="#app">The app</a>
+            <a href="#how-it-works">How it works</a>
+            <Link href={GET_STARTED}>Start your journey</Link>
           </div>
           <div>
             <strong>Driving</strong>
-            <Link href="/drive">Find Lessons</Link>
-            <a href="#for-parents">For Parents</a>
-            <a href="#for-schools">For Driving Schools</a>
+            <Link href={GET_STARTED_DRIVE}>Explore lessons</Link>
           </div>
           <div>
-            <strong>Account & support</strong>
+            <strong>Company</strong>
+            <a href="#schools">Partner schools</a>
+            <a href="#faq">FAQ</a>
             <Link href="/login">Sign in</Link>
-            <span title="Support page is coming soon">Support <small>Coming soon</small></span>
-            <span title="Privacy page is coming soon">Privacy <small>Coming soon</small></span>
-            <span title="Terms page is coming soon">Terms <small>Coming soon</small></span>
+            <span title="Support page coming soon">
+              Contact <small>Coming soon</small>
+            </span>
+            <span title="Privacy page coming soon">
+              Privacy <small>Coming soon</small>
+            </span>
+            <span title="Terms page coming soon">
+              Terms <small>Coming soon</small>
+            </span>
           </div>
         </div>
         <div className="public-footer__legal">
           <p>
-            DMV Study is an independent platform and is not affiliated with,
-            endorsed by, or operated by the California Department of Motor Vehicles.
-            Requirements can change; confirm official rules at the California DMV.
+            DriveEasy is an independent platform and is not affiliated with,
+            endorsed by, or operated by the California Department of Motor
+            Vehicles. Requirements can change; confirm official rules at the
+            California DMV.
           </p>
-          <p>© {new Date().getFullYear()} DMV Study</p>
+          <p>© {new Date().getFullYear()} DriveEasy</p>
         </div>
       </footer>
     </main>
