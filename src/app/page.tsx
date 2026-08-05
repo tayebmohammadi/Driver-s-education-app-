@@ -18,7 +18,7 @@ import {
 export const metadata: Metadata = {
   title: "DriveEasy – Get Your License in One Simple App",
   description:
-    "California-focused driver education, permit preparation, license-journey guidance, and a preview of driving-lesson discovery in one place.",
+    "All-in-one driving school app for students, parents, and licensed schools. DMV-style prep, instructor search, online booking, and progress tracking in one place.",
 };
 
 function ArrowIcon() {
@@ -79,29 +79,28 @@ function ShieldIcon() {
 
 const howItWorksSteps = [
   {
-    title: "Set up your path",
-    description: "Choose a teen, adult, or lessons-only starting point.",
+    title: "Start free",
+    description: "30-hour driver ed or permit prep (18+).",
     icon: BookIcon,
   },
   {
-    title: "Learn and prepare",
-    description: "Use the course and permit-preparation tools that fit your path.",
+    title: "Earn certificate",
+    description: "Free when you finish — others charge $40–$85.",
     icon: ShieldIcon,
   },
   {
-    title: "Explore lessons",
-    description: "Preview instructor profiles, pricing, and example availability.",
+    title: "Pick instructor",
+    description: "Filter by area, price, language, and availability.",
     icon: UsersIcon,
   },
   {
-    title: "Track your journey",
-    description: "Keep your learning and licensing milestones in view.",
+    title: "Book & track",
+    description: "Schedule lessons and follow your journey to test day.",
     icon: CalendarIcon,
   },
 ] as const;
 
-const GET_STARTED = "/get-started";
-const GET_STARTED_DRIVE = "/get-started?path=lessons";
+const REGISTER_DRIVE = "/register?redirect=%2Fdrive";
 
 export default async function RootPage() {
   const session = await getSessionFromCookies();
@@ -135,15 +134,15 @@ export default async function RootPage() {
               <a href="#how-it-works">How it works</a>
               <a href="#schools">Schools</a>
               <a href="#faq">FAQ</a>
-              <Link href={GET_STARTED}>Start your journey</Link>
+              <Link href="/register">Start for free</Link>
             </nav>
           </details>
           <div className="public-header__actions">
             <Link href="/login" className="public-signin">
               Sign in
             </Link>
-            <Link href={GET_STARTED} className="public-button public-button--small">
-              Start your journey
+            <Link href="/register" className="public-button public-button--small">
+              Start for free
             </Link>
           </div>
         </div>
@@ -154,12 +153,11 @@ export default async function RootPage() {
           <p className="public-eyebrow">All-in-one driving school app</p>
           <h1>Get your driver&apos;s license in one simple app.</h1>
           <p className="public-hero__lead">
-            California-focused learning and journey guidance for teens and adults,
-            with a preview of driving-lesson discovery.
+            For students, parents, and licensed driving schools in California.
           </p>
           <div className="public-hero__actions">
-            <Link href={GET_STARTED} className="public-button">
-              Start your journey <ArrowIcon />
+            <Link href="/register" className="public-button">
+              Start for free <ArrowIcon />
             </Link>
             <a href="#app" className="public-button public-button--secondary">
               See the app
@@ -254,11 +252,11 @@ export default async function RootPage() {
           ))}
         </ol>
         <div className="public-how__cta">
-          <Link href={GET_STARTED} className="public-button">
-            Start your journey <ArrowIcon />
+          <Link href="/register" className="public-button">
+            Start for free <ArrowIcon />
           </Link>
-          <Link href={GET_STARTED_DRIVE} className="public-text-link">
-            Explore driving lessons <ArrowIcon />
+          <Link href={REGISTER_DRIVE} className="public-text-link">
+            Find driving lessons <ArrowIcon />
           </Link>
         </div>
       </section>
@@ -287,8 +285,8 @@ export default async function RootPage() {
         </h2>
         <PublicAppShowcase />
         <p className="public-app-intro__note">
-          Marketplace profiles, ratings, prices, and availability shown in this
-          preview are sample information.
+          Not affiliated with the California DMV. Lessons through licensed schools
+          and instructors.
         </p>
       </section>
 
@@ -300,8 +298,8 @@ export default async function RootPage() {
           <p className="public-eyebrow">For driving schools</p>
           <h2 id="schools-title">More students. Less admin.</h2>
           <p>
-            Preview how a future partner experience could make school profiles,
-            lesson options, and scheduling easier to understand.
+            Keep your license, fleet, and insurance. We send study-ready students
+            and handle the online booking flow.
           </p>
           <ul className="public-partners__list">
             {schoolBenefits.map((item) => (
@@ -312,15 +310,15 @@ export default async function RootPage() {
             ))}
           </ul>
         </div>
-        <a href="#faq" className="public-button public-button--light">
+        <a href="mailto:partners@driveeasy.com?subject=School%20partnership" className="public-button public-button--light">
           Partner with us <ArrowIcon />
         </a>
       </section>
 
       <section className="public-traction" id="traction" aria-labelledby="traction-title">
         <div className="public-section-heading">
-          <p className="public-eyebrow">One connected product</p>
-          <h2 id="traction-title">Built around the full driving journey.</h2>
+          <p className="public-eyebrow">Traction</p>
+          <h2 id="traction-title">Validated with real conversations.</h2>
         </div>
         <div className="public-traction-grid">
           {tractionMetrics.map((metric) => (
@@ -335,15 +333,15 @@ export default async function RootPage() {
 
       <section className="public-testimonials" aria-labelledby="testimonials-title">
         <div className="public-section-heading">
-          <p className="public-eyebrow">Designed for real needs</p>
-          <h2 id="testimonials-title">A clearer experience for every audience.</h2>
+          <p className="public-eyebrow">Survey results</p>
+          <h2 id="testimonials-title">What students, parents, and schools told us.</h2>
         </div>
         <div className="public-testimonial-grid">
           {surveyInsights.map((item) => (
-            <article key={item.audience} className="public-testimonial-card public-survey-card">
+            <blockquote key={item.audience} className="public-testimonial-card public-survey-card">
               <p className="public-survey-card__audience">{item.audience}</p>
-              <p>{item.quote}</p>
-            </article>
+              <p>&ldquo;{item.quote}&rdquo;</p>
+            </blockquote>
           ))}
         </div>
       </section>
@@ -371,18 +369,18 @@ export default async function RootPage() {
           <p className="public-eyebrow">Ready to start?</p>
           <h2>Ready to start your license journey?</h2>
           <p className="public-final__sub">
-            Set up the path that fits your age, current stage, and driving goals.
+            Free study path and free certificate. Book lessons when you&apos;re ready. Schools — join the waitlist.
           </p>
         </div>
         <div className="public-final__actions">
-          <Link href={GET_STARTED} className="public-button public-button--light">
-            Start your journey <ArrowIcon />
+          <Link href="/register" className="public-button public-button--light">
+            Start for free <ArrowIcon />
           </Link>
-          <Link href={GET_STARTED_DRIVE} className="public-button public-button--secondary">
-            Explore driving lessons
+          <Link href={REGISTER_DRIVE} className="public-button public-button--secondary">
+            Find driving lessons
           </Link>
           <a
-            href="#faq"
+            href="mailto:partners@driveeasy.com?subject=School%20partnership"
             className="public-final__secondary"
           >
             Partner with us
@@ -399,17 +397,17 @@ export default async function RootPage() {
               </span>
               <span>DriveEasy</span>
             </Link>
-            <p>California driver education and license-journey guidance, simplified.</p>
+            <p>California driver&apos;s ed and lesson booking, simplified.</p>
           </div>
           <div>
             <strong>Product</strong>
             <a href="#app">The app</a>
             <a href="#how-it-works">How it works</a>
-            <Link href={GET_STARTED}>Start your journey</Link>
+            <Link href="/register">Start for free</Link>
           </div>
           <div>
             <strong>Driving</strong>
-            <Link href={GET_STARTED_DRIVE}>Explore lessons</Link>
+            <Link href={REGISTER_DRIVE}>Find lessons</Link>
           </div>
           <div>
             <strong>Company</strong>

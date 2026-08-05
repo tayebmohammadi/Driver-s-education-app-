@@ -1,30 +1,30 @@
 export const LEGAL_NOTE =
-  "DriveEasy is an independent platform and is not affiliated with the California DMV. Marketplace listings are currently sample previews.";
+  "Lessons are provided through licensed driving schools and independent instructors. DriveEasy is not the DMV.";
 
 export const heroJourneySteps = [
-  "Choose Your Path",
-  "Learn and Prepare",
-  "Get Your Permit",
-  "Explore Lessons",
-  "Practice Driving",
-  "Prepare for the Road Test",
+  "Study 30 Hours",
+  "Get Completion Certificate",
+  "Visit DMV",
+  "Get Learner's Permit",
+  "Driving Practice (6 Hours)",
+  "Final Driving Test",
 ];
 
 export const certificateHighlight = {
-  eyebrow: "Certificate preview",
-  title: "See how course completion could be documented.",
+  eyebrow: "Included free",
+  title: "Your completion certificate costs $0 here.",
   description:
-    "The current application includes a certificate preview. Official issuance will require verification of every configured course-completion requirement.",
-  ours: "Preview",
-  oursLabel: "Available now",
-  theirs: "Verified",
-  theirsLabel: "Future issuance",
+    "Finish 30 hours of study and get your certificate free. Other driver ed apps and courses typically charge $40–$85 for the same document.",
+  ours: "$0",
+  oursLabel: "DriveEasy",
+  theirs: "$40–$85",
+  theirsLabel: "Typical competitors",
 };
 
 export const appIntro = {
   eyebrow: "What we're building",
   headline: "We are modernizing an outdated driver's license system.",
-  lead: "Our app brings learning, permit preparation, license-journey guidance, and a preview of instructor discovery into one clear experience.",
+  lead: "Our app gives students, parents, and driving schools one clear place for learning, DMV prep, instructor comparison, and lesson booking.",
   closing:
     "Our goal is to make the entire license journey easier, clearer, and more efficient for everyone—all in one place.",
   audiences: ["Students", "Parents", "Driving schools"],
@@ -36,7 +36,7 @@ export const brokenProcessSteps = [
   "Phone calls",
   "School websites",
   "Manual scheduling",
-  "Separate progress tools",
+  "Progress alone",
 ];
 
 export const problemItems = [
@@ -58,70 +58,102 @@ export const problemItems = [
   },
 ];
 
+export const theoryItems = [
+  {
+    title: "Short lessons",
+    description: "Series and topics you can finish on your phone.",
+  },
+  {
+    title: "DMV-style quizzes",
+    description: "Practice with explanations — not real exam copies.",
+  },
+  {
+    title: "Weak-area tracking",
+    description: "See what to review before you retake a quiz.",
+  },
+  {
+    title: "Certificate flow",
+    description: "30-hour tracking with completion flow subject to DMV approval.",
+  },
+];
+
+export const progressItems = [
+  { label: "Study hours", value: 40, detail: "12 / 30 hrs" },
+  { label: "Series completed", value: 10, detail: "3 / 30" },
+  { label: "Quiz performance", value: 65, detail: "Weak areas flagged" },
+  { label: "Road-test readiness", value: 25, detail: "Keep practicing" },
+];
+
+export const progressChecklist = [
+  "Lesson history and upcoming bookings",
+  "Skills completed and hours remaining",
+  "License milestones in order",
+];
+
 export const schoolBenefits = [
-  "Preview school and instructor profiles",
-  "Present lesson options clearly",
-  "Explore a simpler scheduling interface",
+  "Students arrive study-ready",
+  "Fewer scheduling phone calls",
+  "More filled lesson slots",
 ];
 
 export const tractionMetrics = [
-  { value: "Learn", label: "Structured education", detail: "Lessons, quizzes, and permit preparation" },
-  { value: "Journey", label: "Clear next steps", detail: "A high-level view of licensing milestones" },
-  { value: "Driving", label: "Marketplace preview", detail: "Sample profiles, pricing, and availability" },
+  { value: "100+", label: "People interviewed", detail: "Students, parents, instructors" },
+  { value: "15", label: "Schools interested", detail: "Early partner talks" },
+  { value: "3", label: "Audiences validated", detail: "Students, parents, schools" },
 ];
 
 export const surveyInsights = [
   {
     audience: "Students",
     quote:
-      "Understand what to study now and which milestone comes next.",
+      "There's no marketplace to compare prices, and scheduling a lesson is harder than it should be.",
   },
   {
     audience: "Parents",
     quote:
-      "Follow the learner’s path and understand upcoming requirements.",
+      "It's hard to guide your teen through every step — permits, hours, schools, and bookings all feel scattered.",
   },
   {
     audience: "Driving schools",
     quote:
-      "Preview how profiles, lesson options, and scheduling could fit together.",
+      "Most of our time goes to phone calls and manual scheduling instead of teaching.",
   },
 ];
 
 export const faqs = [
   {
-    question: "Who is DriveEasy for?",
+    question: "Is the 30-hour driver’s ed course free?",
     answer:
-      "DriveEasy supports California teens beginning the licensing journey, adults preparing for a first license, permit holders, and licensed drivers looking for refresher or road-test preparation options.",
+      "Yes — the study path and completion certificate are free. Many competitors charge $40–$85 for the certificate alone. Driving lessons are booked separately through licensed schools on the platform.",
   },
   {
-    question: "Does the application issue an official completion certificate?",
+    question: "Is the completion certificate really free?",
     answer:
-      "Not yet. The current certificate screen is a preview. Official issuance must verify all configured course-completion requirements and include an appropriate verification record.",
+      "Yes. After 30 hours of study, your certificate is included at no cost. Other driver ed platforms often charge $40–$85 for the same certificate.",
   },
   {
     question: "Is DriveEasy DMV-approved?",
     answer:
-      "No. DriveEasy is an independent platform and is not affiliated with, endorsed by, or operated by the California DMV. Confirm current requirements with the DMV.",
+      "No — we're an independent platform, not the California DMV. We offer DMV-style prep and a certificate flow subject to DMV approval. Confirm current rules with the DMV.",
   },
   {
-    question: "Can students book live driving lessons now?",
+    question: "How do students book driving lessons?",
     answer:
-      "Not yet. The current marketplace uses sample profiles, ratings, pricing, and example availability to preview the future lesson-discovery and scheduling experience.",
+      "Create an account, open Driving, compare instructors by location and price, and book online.",
   },
   {
     question: "Is this useful for parents?",
     answer:
-      "The public experience explains the overall path for families, but parent accounts and a parent dashboard have not been implemented yet.",
+      "Yes — one roadmap from study hours to booked lessons, without chasing updates across apps.",
   },
   {
     question: "How do driving schools partner?",
     answer:
-      "The site currently previews a future school-partner experience. Partner enrollment, verification, callback tools, and a school portal are not implemented yet.",
+      "You keep your license, instructors, vehicles, and insurance. We send you ready students. Email us to join the waitlist.",
   },
   {
     question: "Can adults use the app?",
     answer:
-      "Yes. Adults can use permit-preparation tools or explore lesson options without following the teen Driver’s Ed path.",
+      "Yes — permit prep and behind-the-wheel booking work without the teen driver’s ed path.",
   },
 ];
