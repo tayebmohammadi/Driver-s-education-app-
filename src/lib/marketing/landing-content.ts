@@ -98,25 +98,40 @@ export const schoolBenefits = [
 
 export const tractionMetrics = [
   { value: "100+", label: "People interviewed", detail: "Students, parents, instructors" },
-  { value: "15", label: "Schools interested", detail: "Early partner talks" },
+  { value: "27", label: "Schools interested", detail: "Already interested in partnering" },
   { value: "3", label: "Audiences validated", detail: "Students, parents, schools" },
 ];
 
 export const surveyInsights = [
   {
     audience: "Students",
-    quote:
-      "There's no marketplace to compare prices, and scheduling a lesson is harder than it should be.",
+    quote: "We want one app we can come back to.",
+    points: [
+      "Students say they use too many apps and websites to study and prepare.",
+      "They want one place for DMV prep, next steps, and lesson booking.",
+      "They say comparing prices and availability by calling schools is frustrating.",
+      "They want to see instructor profiles, ratings, language, and availability before booking.",
+    ],
   },
   {
     audience: "Parents",
-    quote:
-      "It's hard to guide your teen through every step — permits, hours, schools, and bookings all feel scattered.",
+    quote: "It is hard to know the right next step.",
+    points: [
+      "Parents say the process feels complicated and unclear.",
+      "Many do not know which app, school, or DMV step is the right one.",
+      "Some families delay lessons because the process feels stressful.",
+      "Parents want a simple way to understand what their child needs next.",
+    ],
   },
   {
-    audience: "Driving schools",
-    quote:
-      "Most of our time goes to phone calls and manual scheduling instead of teaching.",
+    audience: "Driving schools & instructors",
+    quote: "We spend too much time on scheduling.",
+    points: [
+      "Schools say calls, messages, scheduling, and admin work take too much time.",
+      "Instructors can still have empty time slots that are hard to fill.",
+      "Manual scheduling makes the business less efficient.",
+      "Schools want an easier way to receive students and manage bookings online.",
+    ],
   },
 ];
 

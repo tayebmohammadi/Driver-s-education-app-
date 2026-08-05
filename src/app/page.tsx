@@ -290,29 +290,46 @@ export default async function RootPage() {
         </p>
       </section>
 
-      <section className="public-partners" id="schools" aria-labelledby="schools-title">
-        <div className="public-partners__icon" aria-hidden="true">
-          <CarIcon />
-        </div>
-        <div>
-          <p className="public-eyebrow">For driving schools</p>
-          <h2 id="schools-title">More students. Less admin.</h2>
+      <section className="public-school-grid" id="schools" aria-label="For driving schools">
+        <article className="public-partners" aria-labelledby="schools-title">
+          <div className="public-partners__icon" aria-hidden="true">
+            <CarIcon />
+          </div>
+          <div>
+            <p className="public-eyebrow">For driving schools</p>
+            <h2 id="schools-title">More students. Less admin.</h2>
+            <p>
+              Keep your license, fleet, and insurance. We send study-ready students
+              and handle the online booking flow.
+            </p>
+            <ul className="public-partners__list">
+              {schoolBenefits.map((item) => (
+                <li key={item}>
+                  <CheckIcon />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <a href="mailto:partners@driveeasy.com?subject=School%20partnership" className="public-button public-button--light">
+            Partner with us <ArrowIcon />
+          </a>
+        </article>
+
+        <article className="public-school-offer" aria-labelledby="school-offer-title">
+          <p className="public-eyebrow">Free for schools</p>
+          <h2 id="school-offer-title">
+            Stop Paying $75+/Month for Scheduling Software. Get Yours 100% Free.
+          </h2>
           <p>
-            Keep your license, fleet, and insurance. We send study-ready students
-            and handle the online booking flow.
+            Why pay recurring subscription fees just to manage your calendar?
+            Enjoy full scheduling capabilities at $0/month—and only pay a 10%
+            commission when we bring a student to your school.
           </p>
-          <ul className="public-partners__list">
-            {schoolBenefits.map((item) => (
-              <li key={item}>
-                <CheckIcon />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <a href="mailto:partners@driveeasy.com?subject=School%20partnership" className="public-button public-button--light">
-          Partner with us <ArrowIcon />
-        </a>
+          <a href="mailto:partners@driveeasy.com?subject=Free%20school%20scheduler" className="public-button public-button--light">
+            Claim Your Free Scheduler <ArrowIcon />
+          </a>
+        </article>
       </section>
 
       <section className="public-traction" id="traction" aria-labelledby="traction-title">
@@ -333,16 +350,30 @@ export default async function RootPage() {
 
       <section className="public-testimonials" aria-labelledby="testimonials-title">
         <div className="public-section-heading">
-          <p className="public-eyebrow">Survey results</p>
-          <h2 id="testimonials-title">What students, parents, and schools told us.</h2>
+          <p className="public-eyebrow">Customer discovery</p>
+          <h2 id="testimonials-title">What people are telling us</h2>
+          <p className="public-testimonials__lead">
+            Students, parents, and driving schools all feel the current licensing
+            process is too confusing, manual, and disconnected.
+          </p>
         </div>
         <div className="public-testimonial-grid">
-          {surveyInsights.map((item) => (
-            <blockquote key={item.audience} className="public-testimonial-card public-survey-card">
-              <p className="public-survey-card__audience">{item.audience}</p>
-              <p>&ldquo;{item.quote}&rdquo;</p>
-            </blockquote>
-          ))}
+          {surveyInsights.map((item, index) => {
+            const AudienceIcon = index === 0 ? BookIcon : index === 1 ? UsersIcon : CalendarIcon;
+
+            return (
+              <article key={item.audience} className="public-testimonial-card public-survey-card">
+                <p className="public-survey-card__audience">
+                  <span aria-hidden="true"><AudienceIcon /></span>
+                  {item.audience}
+                </p>
+                <h3>&ldquo;{item.quote}&rdquo;</h3>
+                <ul>
+                  {item.points.map((point) => <li key={point}>{point}</li>)}
+                </ul>
+              </article>
+            );
+          })}
         </div>
       </section>
 

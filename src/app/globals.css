@@ -10103,6 +10103,222 @@ a {
   }
 }
 
+/* Landing — school offer and customer discovery */
+.public-school-grid {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto 96px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.public-school-grid .public-partners,
+.public-school-offer {
+  width: auto;
+  min-width: 0;
+  margin: 0;
+  border-radius: 22px;
+  background: #173f30;
+  color: #fff;
+}
+
+.public-school-grid .public-partners {
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 20px;
+  padding: 36px 32px;
+}
+
+.public-school-grid .public-partners__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+}
+
+.public-school-grid .public-partners__icon svg {
+  width: 24px;
+}
+
+.public-school-grid .public-partners h2,
+.public-school-offer h2 {
+  margin: 6px 0 12px;
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.65rem, 2.25vw, 2.25rem);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+}
+
+.public-school-grid .public-partners > div > p:last-of-type,
+.public-school-offer > p:not(.public-eyebrow) {
+  margin: 0;
+  color: #c0d4c7;
+  font-size: 0.8rem;
+  line-height: 1.65;
+}
+
+.public-school-grid .public-partners .public-button {
+  grid-column: 2;
+  justify-self: start;
+}
+
+.public-school-offer {
+  display: flex;
+  flex-direction: column;
+  padding: 36px 32px;
+  background: linear-gradient(135deg, #174333 0%, #1f5a3d 100%);
+}
+
+.public-school-offer .public-eyebrow {
+  color: #afd6bc;
+}
+
+.public-school-offer .public-button {
+  width: 100%;
+  margin-top: auto;
+}
+
+.public-testimonials {
+  margin-bottom: 90px;
+  padding: 48px 32px 40px;
+  border: 1px solid #d8e1e8;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #eef3ff 0%, #f9fbff 62%, #fff 100%);
+}
+
+.public-testimonials .public-section-heading {
+  max-width: 780px;
+  margin: 0 auto 38px;
+  text-align: center;
+}
+
+.public-testimonials .public-section-heading h2 {
+  margin: 8px 0 10px;
+}
+
+.public-testimonials__lead {
+  max-width: 720px;
+  margin: 0 auto;
+  color: #5e6d78;
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.public-testimonial-grid {
+  gap: 16px;
+}
+
+.public-testimonial-card {
+  padding: 22px 20px;
+  border-color: #d6dfe8;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(45, 65, 92, 0.04);
+}
+
+.public-survey-card__audience {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 16px;
+  color: #3268c6;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.public-survey-card__audience span {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  place-items: center;
+  border-radius: 9px;
+  background: #edf3ff;
+}
+
+.public-survey-card__audience svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.public-survey-card h3 {
+  margin: 0 0 18px;
+  color: #1f2d3d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.12rem;
+  line-height: 1.25;
+}
+
+.public-survey-card ul {
+  display: grid;
+  gap: 11px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.public-survey-card li {
+  position: relative;
+  padding-left: 15px;
+  color: #586577;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.public-survey-card li::before {
+  content: "";
+  position: absolute;
+  top: 0.55em;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #76a4ee;
+}
+
+@media (max-width: 960px) {
+  .public-school-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .public-testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .public-school-grid,
+  .public-testimonials {
+    width: min(100% - 32px, 1180px);
+  }
+
+  .public-school-grid .public-partners,
+  .public-school-offer {
+    padding: 28px 22px;
+  }
+
+  .public-school-grid .public-partners {
+    grid-template-columns: 1fr;
+  }
+
+  .public-school-grid .public-partners .public-button {
+    grid-column: auto;
+    width: 100%;
+  }
+
+  .public-testimonials {
+    padding: 38px 18px 22px;
+    border-radius: 20px;
+  }
+}
+
 /* Landing — problem, flow, theory, progress, traction */
 .public-problem,
 .public-broken-flow,
@@ -10905,5 +11121,47 @@ a {
   .public-hero--intro .public-hero__checks {
     flex-direction: column;
     align-items: center;
+  }
+}
+
+/* Keep the screenshot-specific discovery panel above legacy landing defaults. */
+.public-testimonials {
+  margin-bottom: 90px;
+  padding: 48px 32px 40px;
+  border: 1px solid #d8e1e8;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #eef3ff 0%, #f9fbff 62%, #fff 100%);
+}
+
+.public-testimonial-grid { gap: 16px; }
+
+.public-testimonial-card {
+  padding: 22px 20px;
+  border-color: #d6dfe8;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(45, 65, 92, 0.04);
+}
+
+.public-survey-card__audience {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 16px;
+  color: #3268c6;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 960px) {
+  .public-testimonial-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .public-testimonials {
+    width: min(100% - 32px, 1180px);
+    padding: 38px 18px 22px;
+    border-radius: 20px;
   }
 }
